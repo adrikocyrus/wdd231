@@ -1,0 +1,109 @@
+Kampala Chamber of Commerce — Site Plan
+Prepared by: Adriko Cyrus
+Course: WDD 231 — Web Frontend Development
+Date: 14 sept 2026.
+
+1. Site Name
+Kampala Chamber of Commerce
+
+2. Site Purpose
+The Kampala Chamber of Commerce website will serve as a resource hub for businesses in Kampala City and the surrounding metropolitan area. The site will provide information on local events, host networking opportunities, create a business directory, and encourage local shopping. It aims to promote economic growth across Uganda's capital, support local entrepreneurs from startups to established enterprises, and foster a strong sense of community among Kampala's diverse business sectors.
+
+3. Target Market
+Business owners, entrepreneurs, investors, and patrons in Kampala City and the greater metropolitan area, including Wakiso, Mukono, and the Entebbe corridor. This covers both formal and informal sector businesses, ranging from small market vendors to large corporate enterprises.
+
+4. Site Goals
+Improve member engagement by providing valuable resources, training, and networking opportunities.
+
+Attract new businesses and encourage economic development within Kampala.
+
+Improve the visibility and reputation of the chamber as a trusted authority in local business matters.
+
+Connect Kampala businesses with regional and international trade opportunities.
+
+Support the growth of youth- and women-led enterprises.
+
+5. User Personas
+Small Business Owner — Maria
+Maria is a 35-year-old entrepreneur who owns a boutique in Kampala's bustling market district. She is looking for networking opportunities, business resources, and marketing support to help grow her business. She needs access to affordable training and connections to suppliers.
+
+Corporate Executive — Diego
+Diego is a 47-year-old executive at a large company with operations in Kampala. He is looking for growth opportunities, partnership possibilities, economic development resources, and networking with other business leaders in the area.
+
+The New Resident — Francisco
+Francisco recently relocated to Kampala and is looking to learn more about services available in the area. He is interested in finding business directories, event calendars, and community service opportunities.
+
+6. Scenarios
+A local business owner wants to join the Kampala Chamber of Commerce to network with other business owners. They visit the site to find information on membership benefits, fees, and how to apply.
+
+A community member is looking for upcoming events and workshops hosted by the chamber. They visit the site to browse the events calendar and register for interesting activities.
+
+A visitor from out of town is considering relocating or expanding their business to Kampala and wants to learn more about the local business environment. They explore the chamber's website for information on existing businesses, availability of skilled labor, and quality of life in the area.
+
+7. SEO Plan
+Use relevant keywords in site descriptions, content, and blog posts (e.g., "Kampala business directory," "Uganda chamber of commerce," "Kampala networking events").
+
+Verify the site on Google's Business Profile.
+
+Get inbound links or backlinks from all member businesses to improve rankings.
+
+Embed Google Analytics in all site pages.
+
+Register with local directories and Uganda business listings to boost local SEO.
+
+8. Design Brief
+Element	Choice
+Primary Color	#1F3864 (Deep Blue)
+Secondary Color	#D4A017 (Golden Yellow)
+Background Color	#F4F6F9 (Light Gray-Blue)
+Text Color	#222222 (Almost Black)
+Font Family	Poppins (headings) + Open Sans (body)
+9. Site Map
+text
+Home
+├── About (mission, history, leadership)
+├── Join (membership benefits, fees, application)
+├── Directory (member business listings)
+│   └── Business Detail (individual business page)
+├── Events (calendar, workshops, networking)
+│   └── Event Detail (individual event page)
+├── Resources (guides, training, business tools)
+├── News / Blog
+└── Contact
+10. Wireframes
+Desktop Wireframe
+text
+┌──────────────────────────────────────────┐
+│  LOGO      Nav: Home | Join | Events ...  │
+├──────────────────────────────────────────┤
+│                                          │
+│   HERO — Big welcome message + CTA       │
+│                                          │
+├──────────────────────────────────────────┤
+│  Section 1:   │  Section 2:  │ Section 3 │
+│  Events       │  Directory   │  Join     │
+├──────────────────────────────────────────┤
+│  Section: Featured Businesses (grid)     │
+├──────────────────────────────────────────┤
+│  Footer: Contact | Social | Copyright    │
+└──────────────────────────────────────────┘
+Mobile Wireframe
+text
+┌─────────────────┐
+│ LOGO    ☰ Menu  |
+├─────────────────┤
+│                 │
+│  HERO (stacked) │
+│                 │
+├─────────────────┤
+│  Section 1      │
+│  (full width)   │
+├─────────────────┤
+│  Section 2      │
+│  (full width)   │
+├─────────────────┤
+│  Section 3      │
+│  (full width)   │
+├─────────────────┤
+│  Footer         │
+└─────────────────┘

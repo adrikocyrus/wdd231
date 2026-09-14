@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Directory | Kampala Chamber of Commerce</title>
+  <meta name="description" content="Browse the directory of local businesses that are members of the Kampala Chamber of Commerce.">
+  <meta name="author" content="Adriko Cyrus">
+
+  <!-- Favicon -->
+  <link rel="icon" href="../favicon.ico" type="image/x-icon">
+
+  <!-- Facebook / Open Graph Meta -->
+  <meta property="og:title" content="Kampala Chamber of Commerce — Business Directory">
+  <meta property="og:description" content="Discover local businesses that are members of the Kampala Chamber of Commerce.">
+  <meta property="og:image" content="https://yourusername.github.io/wdd231/chamber/images/og-preview.jpg">
+  <meta property="og:url" content="https://yourusername.github.io/wdd231/chamber/directory.html">
+  <meta property="og:type" content="website">
+
+  <!-- Stylesheets: normalize FIRST, then small, then larger -->
+  <link rel="stylesheet" href="styles/normalize.css">
+  <link rel="stylesheet" href="styles/small.css">
+  <link rel="stylesheet" href="styles/larger.css">
+
+  <!-- Script -->
+  <script src="scripts/directory.js" defer></script>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <img src="images/logo.webp" alt="Kampala Chamber of Commerce logo" width="60" height="60">
+      <span>Kampala Chamber</span>
+    </div>
+    <button id="menuBtn" aria-label="Toggle navigation menu">☰</button>
+    <nav id="primaryNav">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="directory.html" class="active">Directory</a></li>
+        <li><a href="join.html">Join</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Member Directory</h1>
+
+    <!-- View toggle buttons -->
+    <div class="view-toggle">
+      <button id="gridView" class="active" aria-label="Grid view">▦ Grid</button>
+      <button id="listView" aria-label="List view">☰ List</button>
+    </div>
+
+    <!-- Members rendered here by JS -->
+    <div id="members" class="grid"></div>
+  </main>
+
+  <footer>
+    <div class="contact-info">
+      <p><strong>Kampala Chamber of Commerce</strong></p>
+      <p>Plot 10, Kampala Boulevard, Kampala, Uganda</p>
+      <p>info@kampalachamber.org | +256 414 000 000</p>
+    </div>
+    <div class="dev-info">
+      <p>&copy; <span id="year"></span> Adriko Cyrus | WDD 231</p>
+      <p>Last Modified: <span id="lastModified"></span></p>
+    </div>
+  </footer>
+</body>
+</html>
