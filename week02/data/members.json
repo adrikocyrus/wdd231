@@ -1,76 +1,76 @@
 {
-  "members": [
-    {
-      "name": "Nakasero-Fresh produce",
-      "address": "12 Nakasero Market Rd, Kampala, Uganda",
-      "phone": "+256 414 123 456",
-      "website": "https://nakaserofresh.example.com",
-      "image": "nakasero-fresh.webp",
-      "membershipLevel": 3,
-      "tagline": "Fresh from Uganda's farms to your table"
-    },
-    {
-      "name": "Kampala-Tech-Hub",
-      "address": "45 Ntinda Rd, Kampala, Uganda",
-      "phone": "+256 414 234 567",
-      "website": "https://kampalatechhub.example.com",
-      "image": "kampala-Tech-HUB.webp",
-      "membershipLevel": 3,
-      "tagline": "Empowering Uganda's digital entrepreneurs"
-    },
-    {
-      "name": "Garden-City-Pharmacy",
-      "address": "Yusuf Lule Rd, Kampala, Uganda",
-      "phone": "+256 414 345 678",
-      "website": "https://gardencitypharm.example.com",
-      "image": "garden-city-Pharmacy.webp",
-      "membershipLevel": 2,
-      "tagline": "Your health, our priority"
-    },
-    {
-      "name": "Entebbe-Road-Logistics",
-      "address": "78 Entebbe Rd, Kampala, Uganda",
-      "phone": "+256 414 456 789",
-      "website": "https://entebbelogistics.example.com",
-      "image": "Entebbe-Road-Logistics.webp",
-      "membershipLevel": 2,
-      "tagline": "Moving Uganda forward"
-    },
-    {
-      "name": "Acacia-Coffee-Roasters",
-      "address": "22 Acacia Ave, Kampala, Uganda",
-      "phone": "+256 414 567 890",
-      "website": "https://acaciacoffee.example.com",
-      "image": "Acacia-Coffee-Roasters.webp",
-      "membershipLevel": 3,
-      "tagline": "Ugandan beans, roasted to perfection"
-    },
-    {
-      "name": "Owino-Textiles",
-      "address": "St. Balikuddembe Market, Kampala, Uganda",
-      "phone": "+256 414 678 901",
-      "website": "https://owinotextiles.example.com",
-      "image": "Owino-Textiles.webp",
-      "membershipLevel": 1,
-      "tagline": "Quality fabrics since 1985"
-    },
-    {
-      "name": "Kampala-Realty-Group",
-      "address": "10 Kampala Blvd, Kampala, Uganda",
-      "phone": "+256 414 789 012",
-      "website": "https://kampalarealty.example.com",
-      "image": "Kampala-Realty-Group.webp",
-      "membershipLevel": 2,
-      "tagline": "Finding your home in the city"
-    },
-    {
-      "name": "Nile-Agro-Supplies",
-      "address": "56 Jinja Rd, Kampala, Uganda",
-      "phone": "+256 414 890 123",
-      "website": "https://nileagro.example.com",
-      "image": "Nile-Agro-Supplies.webp",
-      "membershipLevel": 1,
-      "tagline": "Supporting Uganda's farmers"
-    }
-  ]
+"members": [
+{
+"name": "Nakasero Fresh Produce",
+"address": "12 Nakasero Market Rd, Kampala, Uganda",
+"phone": "+256 414 123 456",
+"website": "https://nakaserofresh.example.com",
+"image": "nakasero-fresh.webp",
+"membershipLevel": 3,
+"tagline": "Fresh from Uganda's farms to your table"
+},
+{
+"name": "Kampala Tech Hub",
+"address": "45 Ntinda Rd, Kampala, Uganda",
+"phone": "+256 414 234 567",
+"website": "https://kampalatechhub.example.com",
+"image": "kampala-Tech-HUB.webp",
+"membershipLevel": 3,
+"tagline": "Empowering Uganda's digital entrepreneurs"
+},
+{
+"name": "Garden City Pharmacy",
+"address": "Yusuf Lule Rd, Kampala, Uganda",
+"phone": "+256 414 345 678",
+"website": "https://gardencitypharm.example.com",
+"image": "garden-city-Pharmacy.webp",
+"membershipLevel": 2,
+"tagline": "Your health, our priority"
+},
+{
+"name": "Entebbe Road Logistics",
+"address": "78 Entebbe Rd, Kampala, Uganda",
+"phone": "+256 414 456 789",
+"website": "https://entebbelogistics.example.com",
+"image": "Entebbe-Road-Logistics.webp",
+"membershipLevel": 2,
+"tagline": "Moving Uganda forward"
+},
+{
+"name": "Acacia Coffee Roasters",
+"address": "22 Acacia Ave, Kampala, Uganda",
+"phone": "+256 414 567 890",
+"website": "https://acaciacoffee.example.com",
+"image": "Acacia-Coffee-Roasters.webp",
+"membershipLevel": 3,
+"tagline": "Ugandan beans, roasted to perfection"
+},
+{
+"name": "Owino Textiles",
+"address": "St. Balikuddembe Market, Kampala, Uganda",
+"phone": "+256 414 678 901",
+"website": "https://owinotextiles.example.com",
+"image": "Owino-Textiles.webp",
+"membershipLevel": 1,
+"tagline": "Quality fabrics since 1985"
+},
+{
+"name": "Kampala Realty Group",
+"address": "10 Kampala Blvd, Kampala, Uganda",
+"phone": "+256 414 789 012",
+"website": "https://kampalarealty.example.com",
+"image": "Kampala-Realty-Group.webp",
+"membershipLevel": 2,
+"tagline": "Finding your home in the city"
+},
+{
+"name": "Nile Agro Supplies",
+"address": "56 Jinja Rd, Kampala, Uganda",
+"phone": "+256 414 890 123",
+"website": "https://nileagro.example.com",
+"image": "Nile-Agro-Supplies.webp",
+"membershipLevel": 1,
+"tagline": "Supporting Uganda's farmers"
+}
+]
 }

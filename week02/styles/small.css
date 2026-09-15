@@ -1,11 +1,20 @@
+/* ========================================
+   CSS Variables
+   ======================================== */
 :root {
   --primary: #1F3864;
   --secondary: #D4A017;
   --background: #F4F6F9;
   --text: #222222;
   --white: #FFFFFF;
+  --border: #CCCCCC;
+  --muted: #555555;
+  --shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
 }
 
+/* ========================================
+   Base
+   ======================================== */
 * {
   box-sizing: border-box;
 }
@@ -23,7 +32,23 @@ h1, h2 {
   color: var(--primary);
 }
 
-/* Header */
+h1 {
+  margin-top: 0;
+  font-size: 1.75rem;
+}
+
+a {
+  color: var(--primary);
+}
+
+a:hover,
+a:focus {
+  text-decoration: underline;
+}
+
+/* ========================================
+   Header
+   ======================================== */
 header {
   background-color: var(--primary);
   color: var(--white);
@@ -40,6 +65,7 @@ header {
   gap: 0.5rem;
   font-weight: bold;
   font-size: 1.1rem;
+  color: var(--white);
 }
 
 .logo img {
@@ -47,7 +73,7 @@ header {
 }
 
 #menuBtn {
-  background: none;
+  background: transparent;
   border: 2px solid var(--white);
   color: var(--white);
   font-size: 1.5rem;
@@ -56,10 +82,23 @@ header {
   border-radius: 4px;
 }
 
+#menuBtn:hover,
+#menuBtn:focus {
+  background-color: var(--secondary);
+  color: var(--primary);
+}
+
+/* ========================================
+   Navigation
+   ======================================== */
+nav {
+  width: 100%;
+}
+
 nav ul {
   list-style: none;
   padding: 0;
-  margin: 0;
+  margin: 1rem 0 0;
   display: none;
   flex-direction: column;
   width: 100%;
@@ -78,18 +117,24 @@ nav a {
 }
 
 nav a.active,
-nav a:hover {
+nav a:hover,
+nav a:focus {
   background-color: var(--secondary);
   color: var(--primary);
 }
 
-/* Main */
+/* ========================================
+   Main
+   ======================================== */
 main {
   max-width: 1100px;
   margin: 0 auto;
   padding: 1rem;
 }
 
+/* ========================================
+   View Toggle
+   ======================================== */
 .view-toggle {
   display: flex;
   gap: 0.5rem;
@@ -97,7 +142,7 @@ main {
 }
 
 .view-toggle button {
-  background: var(--white);
+  background-color: var(--white);
   border: 2px solid var(--primary);
   color: var(--primary);
   padding: 0.5rem 1rem;
@@ -106,63 +151,103 @@ main {
   font-weight: bold;
 }
 
+.view-toggle button:hover,
+.view-toggle button:focus {
+  background-color: var(--secondary);
+  color: var(--primary);
+}
+
 .view-toggle button.active {
-  background: var(--primary);
+  background-color: var(--primary);
   color: var(--white);
 }
 
-/* Members */
+/* ========================================
+   Members Container — Grid (default)
+   ======================================== */
 #members.grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: 1fr;
   gap: 1rem;
 }
 
+/* ========================================
+   Members Container — List
+   ======================================== */
 #members.list {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
-}
-
-.member-card {
-  background: var(--white);
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  padding: 1rem;
-  text-align: center;
+  gap: 0.75rem;
 }
 
 #members.list .member-card {
+  display: block;
   text-align: left;
-  display: grid;
-  grid-template-columns: 100px 1fr;
-  gap: 1rem;
-  align-items: center;
+  border-left: 4px solid var(--secondary);
+  padding: 0.75rem 1rem;
+}
+
+/* Hide images in list view (rubric requirement) */
+#members.list .member-card img {
+  display: none;
+}
+
+/* ========================================
+   Member Cards
+   ======================================== */
+.member-card {
+  background-color: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1rem;
+  text-align: center;
+  box-shadow: var(--shadow);
 }
 
 .member-card img {
-  max-width: 120px;
-  height: auto;
+  display: block;
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  margin: 0 auto 0.75rem;
   border-radius: 4px;
 }
 
 .member-card h2 {
-  font-size: 1.1rem;
+  font-size: 1.15rem;
   margin: 0.5rem 0;
 }
 
-.tagline {
+.member-card p {
+  margin: 0.5rem 0;
+}
+
+.member-card .tagline {
   font-style: italic;
-  color: #555;
+  color: var(--muted);
   font-size: 0.9rem;
 }
 
-.level {
+.member-card .level {
   font-weight: bold;
-  color: var(--secondary);
+  color: var(--primary);
 }
 
-/* Footer */
+/* ========================================
+   Error Message
+   ======================================== */
+.error-message {
+  background-color: var(--white);
+  border: 1px solid var(--border);
+  padding: 1rem;
+  border-radius: 8px;
+  text-align: center;
+  color: var(--text);
+}
+
+/* ========================================
+   Footer
+   ======================================== */
 footer {
   background-color: var(--primary);
   color: var(--white);
@@ -176,7 +261,10 @@ footer p {
   font-size: 0.9rem;
 }
 
+footer a {
+  color: var(--white);
+}
+
 .contact-info {
   margin-bottom: 1rem;
 }
-
