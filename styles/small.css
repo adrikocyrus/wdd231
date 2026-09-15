@@ -20,7 +20,7 @@
 }
 
 body {
-  font-family: 'Open Sans', Arial, sans-serif;
+  font-family: "Roboto", sans-serif;
   background-color: var(--background);
   color: var(--text);
   margin: 0;
