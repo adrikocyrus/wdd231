@@ -6,11 +6,11 @@
 
     <meta
         name="description"
-        content="Browse the directory of local businesses that are members of the Kampala Chamber of Commerce."
+        content="Join the Kampala Chamber of Commerce and connect with local businesses in Uganda."
     >
     <meta name="author" content="Adriko Cyrus">
 
-    <title>Kampala Chamber of Commerce | Directory</title>
+    <title>Kampala Chamber of Commerce | Join</title>
 
     <!-- Favicon -->
     <link rel="icon" href="images/favicon.ico" type="image/x-icon">
@@ -24,22 +24,10 @@
     >
 
     <!-- Open Graph Meta Tags -->
-    <meta
-        property="og:title"
-        content="Kampala Chamber of Commerce — Business Directory"
-    >
-    <meta
-        property="og:description"
-        content="Discover local businesses that are members of the Kampala Chamber of Commerce."
-    >
-    <meta
-        property="og:image"
-        content="https://adrikocyrus.github.io/wdd231/chamber/images/logo.svg"
-    >
-    <meta
-        property="og:url"
-        content="https://adrikocyrus.github.io/wdd231/chamber/directory.html"
-    >
+    <meta property="og:title" content="Kampala Chamber of Commerce — Join">
+    <meta property="og:description" content="Become a member of the Kampala Chamber of Commerce.">
+    <meta property="og:image" content="https://adrikocyrus.github.io/wdd231/chamber/images/logo.svg">
+    <meta property="og:url" content="https://adrikocyrus.github.io/wdd231/chamber/join.html">
     <meta property="og:type" content="website">
 
     <!-- CSS -->
@@ -48,7 +36,6 @@
     <link rel="stylesheet" href="styles/larger.css">
 
     <!-- JavaScript -->
-    <script src="scripts/directory.js" defer></script>
     <script src="scripts/main.js" defer></script>
 </head>
 
@@ -81,42 +68,27 @@
                     <a href="index.html">Home</a>
                 </li>
                 <li>
-                    <a href="directory.html" class="active" aria-current="page">Directory</a>
+                    <a href="directory.html">Directory</a>
+                </li>
+                <li>
+                    <a href="join.html" class="active" aria-current="page">Join</a>
+                </li>
+            </ul>
+        </nav>
     </header>
 
     <main>
-        <h1>Member Directory</h1>
+        <h1>Join the Chamber</h1>
 
-        <div
-            class="view-toggle"
-            role="group"
-            aria-label="Directory display options"
-        >
-            <button
-                id="gridView"
-                type="button"
-                class="active"
-                aria-label="Display members in grid view"
-                aria-pressed="true"
-            >
-                ▦ Grid
-            </button>
+        <p>
+            Membership information and the application form are coming soon.
+        </p>
 
-            <button
-                id="listView"
-                type="button"
-                aria-label="Display members in list view"
-                aria-pressed="false"
-            >
-                ☰ List
-            </button>
-        </div>
-
-        <div
-            id="members"
-            class="grid"
-            aria-live="polite"
-        ></div>
+        <p>
+            In the meantime, please browse our
+            <a href="directory.html">Member Directory</a> to see the businesses
+            that already belong to the Kampala Chamber of Commerce.
+        </p>
     </main>
 
     <footer>

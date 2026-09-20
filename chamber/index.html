@@ -6,11 +6,11 @@
 
     <meta
         name="description"
-        content="Browse the directory of local businesses that are members of the Kampala Chamber of Commerce."
+        content="Kampala Chamber of Commerce — connecting local businesses, promoting growth, and strengthening Uganda's economy."
     >
     <meta name="author" content="Adriko Cyrus">
 
-    <title>Kampala Chamber of Commerce | Directory</title>
+    <title>Kampala Chamber of Commerce | Home</title>
 
     <!-- Favicon -->
     <link rel="icon" href="images/favicon.ico" type="image/x-icon">
@@ -24,22 +24,10 @@
     >
 
     <!-- Open Graph Meta Tags -->
-    <meta
-        property="og:title"
-        content="Kampala Chamber of Commerce — Business Directory"
-    >
-    <meta
-        property="og:description"
-        content="Discover local businesses that are members of the Kampala Chamber of Commerce."
-    >
-    <meta
-        property="og:image"
-        content="https://adrikocyrus.github.io/wdd231/chamber/images/logo.svg"
-    >
-    <meta
-        property="og:url"
-        content="https://adrikocyrus.github.io/wdd231/chamber/directory.html"
-    >
+    <meta property="og:title" content="Kampala Chamber of Commerce — Home">
+    <meta property="og:description" content="Connecting local businesses across Kampala, Uganda.">
+    <meta property="og:image" content="https://adrikocyrus.github.io/wdd231/chamber/images/logo.svg">
+    <meta property="og:url" content="https://adrikocyrus.github.io/wdd231/chamber/index.html">
     <meta property="og:type" content="website">
 
     <!-- CSS -->
@@ -48,7 +36,6 @@
     <link rel="stylesheet" href="styles/larger.css">
 
     <!-- JavaScript -->
-    <script src="scripts/directory.js" defer></script>
     <script src="scripts/main.js" defer></script>
 </head>
 
@@ -78,45 +65,31 @@
         <nav id="primaryNav" aria-label="Main navigation">
             <ul>
                 <li>
-                    <a href="index.html">Home</a>
+                    <a href="index.html" class="active" aria-current="page">Home</a>
                 </li>
                 <li>
-                    <a href="directory.html" class="active" aria-current="page">Directory</a>
+                    <a href="directory.html">Directory</a>
+                </li>
+                <li>
+                    <a href="join.html">Join</a>
+                </li>
+            </ul>
+        </nav>
     </header>
 
     <main>
-        <h1>Member Directory</h1>
+        <h1>Welcome to the Kampala Chamber of Commerce</h1>
 
-        <div
-            class="view-toggle"
-            role="group"
-            aria-label="Directory display options"
-        >
-            <button
-                id="gridView"
-                type="button"
-                class="active"
-                aria-label="Display members in grid view"
-                aria-pressed="true"
-            >
-                ▦ Grid
-            </button>
+        <p>
+            This page is currently under construction. Please explore our
+            <a href="directory.html">Member Directory</a> to discover local
+            businesses in Kampala.
+        </p>
 
-            <button
-                id="listView"
-                type="button"
-                aria-label="Display members in list view"
-                aria-pressed="false"
-            >
-                ☰ List
-            </button>
-        </div>
-
-        <div
-            id="members"
-            class="grid"
-            aria-live="polite"
-        ></div>
+        <p>
+            Check back soon for upcoming events, membership benefits, and
+            community news.
+        </p>
     </main>
 
     <footer>
