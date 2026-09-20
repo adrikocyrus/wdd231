@@ -1,0 +1,128 @@
+/* ------------------------------
+   General Page Styles
+-------------------------------- */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #f4f6f9;
+  color: #222;
+  line-height: 1.5;
+}
+
+/* ------------------------------
+   Header
+-------------------------------- */
+header {
+  background-color: #1f3864;
+  color: white;
+  padding: 2rem 1rem;
+  text-align: center;
+}
+
+h1 {
+  margin: 0;
+  font-size: 2rem;
+}
+
+/* ------------------------------
+   Main Content
+-------------------------------- */
+main {
+  max-width: 700px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.weather-card {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.weather-card h2 {
+  margin-top: 0;
+  color: #1f3864;
+  font-size: 1.6rem;
+}
+
+.weather-card p {
+  font-size: 1.1rem;
+}
+
+#current-temp {
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+
+/* ------------------------------
+   Weather Icon
+-------------------------------- */
+figure {
+  margin: 1.5rem 0 0;
+}
+
+#weather-icon {
+  display: block;
+  width: 100px;
+  height: 100px;
+  margin: 0 auto;
+}
+
+figcaption {
+  margin-top: 0.5rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+  text-transform: capitalize;
+}
+
+/* ------------------------------
+   Footer
+-------------------------------- */
+footer {
+  margin-top: 2rem;
+  padding: 1.5rem 1rem;
+  background-color: #1f3864;
+  color: white;
+  text-align: center;
+}
+
+footer p {
+  margin: 0;
+}
+
+/* ------------------------------
+   Responsive Design
+-------------------------------- */
+@media screen and (max-width: 480px) {
+  header {
+    padding: 1.5rem 0.75rem;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  main {
+    margin: 1.5rem auto;
+    padding: 0 0.75rem;
+  }
+
+  .weather-card {
+    padding: 1.5rem 1rem;
+  }
+
+  .weather-card h2 {
+    font-size: 1.4rem;
+  }
+
+  .weather-card p {
+    font-size: 1rem;
+  }
+}
