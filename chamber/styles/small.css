@@ -3,7 +3,7 @@
    ======================================== */
 :root {
   --primary: #1F3864;
-  --secondary: #9c7209;   /* darked for AA safety with --primary text */
+  --secondary: #D4A017;
   --background: #F4F6F9;
   --text: #222222;
   --white: #FFFFFF;
@@ -208,9 +208,7 @@ main {
   display: block;
   width: 120px;
   height: 120px;
-  object-fit: contain;
-  background-color: var(--background);
-  padding: 0.25rem;
+  object-fit: cover;
   margin: 0 auto 0.75rem;
   border-radius: 4px;
 }
