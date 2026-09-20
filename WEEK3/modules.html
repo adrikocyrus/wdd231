@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Course Enrollment Modules</title>
+  <link rel="stylesheet" href="styles/modules.css">
+</head>
+<body>
+  <h1 id="courseName"></h1>
+
+  <label for="sectionNumber">Section Number:</label>
+  <input type="number" id="sectionNumber">
+  <button id="enrollStudent">Enroll Student</button>
+  <button id="dropStudent">Drop Student</button>
+
+  <div id="sections"></div>
+
+  <!-- Removed defer, added type="module" -->
+  <script type="module" src="scripts/modules.mjs"></script>
+</body>
+</html>
