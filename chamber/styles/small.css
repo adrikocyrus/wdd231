@@ -3,7 +3,7 @@
    ======================================== */
 :root {
   --primary: #1F3864;
-  --secondary: #C4920F;   /* darked for AA safety with --primary text */
+  --secondary: #9c7209;   /* darked for AA safety with --primary text */
   --background: #F4F6F9;
   --text: #222222;
   --white: #FFFFFF;
