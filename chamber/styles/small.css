@@ -273,6 +273,10 @@ footer a {
 /* ========================================
    HOME PAGE — Hero
    ======================================== */
+
+/* Hero section: relative container that holds the image + overlay.
+   The navy background + min-height ensure the section never collapses
+   even if the image is slow or fails to load. */
 .hero {
   position: relative;
   margin: -1rem -1rem 1.5rem;
@@ -282,25 +286,23 @@ footer a {
   background-color: var(--primary);
 }
 
+/* The hero image itself — full width, capped height, cropped to fill. */
 .hero-img {
   display: block;
   width: 100%;
-  height: auto;
-  max-height: 420px;
+  height: 320px;
   object-fit: cover;
+  object-position: center;
 }
 
-/* Solid navy base + gradient overlay guarantees WCAG AA contrast
-   for white text. DevTools treats rgba() overlays as transparent,
-   so a solid background-color is required behind the gradient. */
+/* Overlay sits on top of the image using absolute positioning.
+   The solid navy background-color provides a guaranteed WCAG AA
+   contrast base for the white text (DevTools flags rgba() overlays
+   as transparent, so a solid base is required). */
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background-color: var(--primary);
-  background-image: linear-gradient(
-    rgba(31, 56, 100, 0.78),
-    rgba(31, 56, 100, 0.78)
-  );
+  background-color: rgba(31, 56, 100, 0.78);
   color: var(--white);
   display: flex;
   flex-direction: column;
@@ -322,6 +324,7 @@ footer a {
   margin: 0 0 1rem;
   font-size: 1rem;
   max-width: 32rem;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
 }
 
 .cta-button {
