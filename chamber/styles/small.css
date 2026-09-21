@@ -278,6 +278,8 @@ footer a {
   margin: -1rem -1rem 1.5rem;
   overflow: hidden;
   border-radius: 0 0 8px 8px;
+  min-height: 320px;
+  background-color: var(--primary);
 }
 
 .hero-img {
@@ -288,12 +290,17 @@ footer a {
   object-fit: cover;
 }
 
-/* Dark overlay improves readability and ensures strong
-   contrast for white text over the hero image. */
+/* Solid navy base + gradient overlay guarantees WCAG AA contrast
+   for white text. DevTools treats rgba() overlays as transparent,
+   so a solid background-color is required behind the gradient. */
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(31, 56, 100, 0.78);
+  background-color: var(--primary);
+  background-image: linear-gradient(
+    rgba(31, 56, 100, 0.78),
+    rgba(31, 56, 100, 0.78)
+  );
   color: var(--white);
   display: flex;
   flex-direction: column;
@@ -510,4 +517,53 @@ footer a {
   color: var(--muted);
   font-style: italic;
   text-align: center;
+}
+
+/* ========================================
+   Join Form (join.html)
+   ======================================== */
+.join-form {
+  background-color: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: var(--shadow);
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.join-form label {
+  font-weight: bold;
+  color: var(--primary);
+  font-size: 0.9rem;
+}
+
+.join-form input,
+.join-form select,
+.join-form textarea {
+  padding: 0.6rem 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 1rem;
+  background-color: var(--white);
+  color: var(--text);
+}
+
+.join-form input:focus,
+.join-form select:focus,
+.join-form textarea:focus {
+  outline: 2px solid var(--secondary);
+  outline-offset: 1px;
+  border-color: var(--primary);
+}
+
+.join-form button {
+  align-self: flex-start;
+  cursor: pointer;
+  border: none;
+  margin-top: 0.5rem;
 }
