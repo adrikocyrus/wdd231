@@ -268,3 +268,236 @@ footer a {
 .contact-info {
   margin-bottom: 1rem;
 }
+
+/* ========================================
+   HOME PAGE — Hero
+   ======================================== */
+.hero {
+  position: relative;
+  margin: -1rem -1rem 1.5rem;
+  overflow: hidden;
+  border-radius: 0 0 8px 8px;
+}
+
+.hero-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 420px;
+  object-fit: cover;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(31, 56, 100, 0.35),
+    rgba(31, 56, 100, 0.75)
+  );
+  color: var(--white);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 1.5rem;
+}
+
+.hero-overlay h1 {
+  color: var(--white);
+  font-size: 1.6rem;
+  margin: 0 0 0.5rem;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+.hero-overlay p {
+  margin: 0 0 1rem;
+  font-size: 1rem;
+  max-width: 32rem;
+}
+
+.cta-button {
+  display: inline-block;
+  background-color: var(--secondary);
+  color: var(--primary);
+  font-weight: bold;
+  text-decoration: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  transition: transform 0.15s ease, background-color 0.15s ease;
+}
+
+.cta-button:hover,
+.cta-button:focus {
+  background-color: #f0b62a;
+  text-decoration: none;
+  transform: translateY(-2px);
+}
+
+/* ========================================
+   HOME PAGE — Grid Layout
+   ======================================== */
+.home-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+/* Events */
+.events-section h2,
+.weather-section h2,
+.spotlights-section h2 {
+  font-size: 1.35rem;
+  margin-top: 0;
+  border-bottom: 3px solid var(--secondary);
+  padding-bottom: 0.4rem;
+}
+
+.event-card {
+  background-color: var(--white);
+  border-left: 4px solid var(--secondary);
+  border-radius: 6px;
+  padding: 0.85rem 1rem;
+  margin-bottom: 0.85rem;
+  box-shadow: var(--shadow);
+}
+
+.event-card h3 {
+  margin: 0 0 0.25rem;
+  color: var(--primary);
+  font-size: 1.05rem;
+}
+
+.event-date {
+  font-size: 0.85rem;
+  color: var(--muted);
+  font-style: italic;
+  margin: 0 0 0.5rem;
+}
+
+.event-card p:last-child {
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+/* Weather */
+.weather-current {
+  background-color: var(--white);
+  border-radius: 8px;
+  padding: 1rem;
+  text-align: center;
+  box-shadow: var(--shadow);
+  margin-bottom: 1rem;
+}
+
+.weather-temp {
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--primary);
+  margin: 0.25rem 0;
+}
+
+.weather-desc {
+  text-transform: capitalize;
+  margin: 0.25rem 0;
+}
+
+.weather-meta {
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin: 0.25rem 0;
+}
+
+.weather-icon {
+  display: block;
+  margin: 0 auto;
+}
+
+.weather-forecast {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+}
+
+.forecast-card {
+  background-color: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.5rem;
+  text-align: center;
+  box-shadow: var(--shadow);
+}
+
+.forecast-day {
+  font-weight: bold;
+  color: var(--primary);
+  margin: 0;
+}
+
+.forecast-date {
+  font-size: 0.75rem;
+  color: var(--muted);
+  margin: 0 0 0.25rem;
+}
+
+.forecast-temp {
+  font-weight: bold;
+  margin: 0.25rem 0 0;
+}
+
+/* Spotlights */
+.spotlights-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+.spotlight-card {
+  background-color: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1rem;
+  text-align: center;
+  box-shadow: var(--shadow);
+}
+
+.spotlight-card img {
+  display: block;
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  margin: 0 auto 0.5rem;
+  border-radius: 50%;
+}
+
+.spotlight-card h3 {
+  margin: 0.25rem 0;
+  color: var(--primary);
+  font-size: 1.05rem;
+}
+
+.spotlight-card .tagline {
+  font-style: italic;
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin: 0.25rem 0 0.5rem;
+}
+
+.spotlight-card p {
+  margin: 0.3rem 0;
+  font-size: 0.9rem;
+}
+
+.spotlight-card .level {
+  font-weight: bold;
+  color: var(--secondary);
+  margin-top: 0.5rem;
+}
+
+.loading {
+  color: var(--muted);
+  font-style: italic;
+  text-align: center;
+}
