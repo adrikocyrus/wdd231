@@ -296,13 +296,12 @@ footer a {
 }
 
 /* Overlay sits on top of the image using absolute positioning.
-   The solid navy background-color provides a guaranteed WCAG AA
-   contrast base for the white text (DevTools flags rgba() overlays
-   as transparent, so a solid base is required). */
+   Opacity raised to 0.92 so WCAG contrast checkers can compute
+   sufficient contrast for the white text on top. */
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background-color: rgba(31, 56, 100, 0.78);
+  background-color: rgba(31, 56, 100, 0.92);
   color: var(--white);
   display: flex;
   flex-direction: column;
@@ -316,7 +315,7 @@ footer a {
   color: var(--white);
   font-size: 1.6rem;
   margin: 0 0 0.5rem;
-  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
 }
 
 .hero-overlay p {
@@ -324,7 +323,7 @@ footer a {
   margin: 0 0 1rem;
   font-size: 1rem;
   max-width: 32rem;
-  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
 }
 
 .cta-button {
@@ -507,9 +506,11 @@ footer a {
   font-size: 0.9rem;
 }
 
+/* FIX #1: Changed from gold (#D4A017) to navy (#1F3864)
+   to pass WCAG AA contrast (11.62:1 on white vs 2.14:1 before). */
 .spotlight-card .level {
   font-weight: bold;
-  color: var(--secondary);
+  color: var(--primary);
   margin-top: 0.5rem;
 }
 
