@@ -27,7 +27,8 @@ body {
   line-height: 1.5;
 }
 
-h1, h2 {
+h1,
+h2 {
   font-family: 'Poppins', Arial, sans-serif;
   color: var(--primary);
 }
@@ -133,7 +134,7 @@ main {
 }
 
 /* ========================================
-   View Toggle
+   View Toggle (Directory page)
    ======================================== */
 .view-toggle {
   display: flex;
@@ -163,7 +164,7 @@ main {
 }
 
 /* ========================================
-   Members Container — Grid (default)
+   Members Container — Grid
    ======================================== */
 #members.grid {
   display: grid;
@@ -187,7 +188,7 @@ main {
   padding: 0.75rem 1rem;
 }
 
-/* Hide images in list view (rubric requirement) */
+/* Hide images in list view */
 #members.list .member-card img {
   display: none;
 }
@@ -287,14 +288,12 @@ footer a {
   object-fit: cover;
 }
 
+/* Dark overlay improves readability and ensures strong
+   contrast for white text over the hero image. */
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    to bottom,
-    rgba(31, 56, 100, 0.35),
-    rgba(31, 56, 100, 0.75)
-  );
+  background: rgba(31, 56, 100, 0.78);
   color: var(--white);
   display: flex;
   flex-direction: column;
@@ -308,10 +307,11 @@ footer a {
   color: var(--white);
   font-size: 1.6rem;
   margin: 0 0 0.5rem;
-  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
 }
 
 .hero-overlay p {
+  color: var(--white);
   margin: 0 0 1rem;
   font-size: 1rem;
   max-width: 32rem;
@@ -330,7 +330,8 @@ footer a {
 
 .cta-button:hover,
 .cta-button:focus {
-  background-color: #f0b62a;
+  background-color: #F0B62A;
+  color: var(--primary);
   text-decoration: none;
   transform: translateY(-2px);
 }
@@ -345,7 +346,9 @@ footer a {
   margin-bottom: 2rem;
 }
 
-/* Events */
+/* ========================================
+   Events
+   ======================================== */
 .events-section h2,
 .weather-section h2,
 .spotlights-section h2 {
@@ -382,7 +385,9 @@ footer a {
   font-size: 0.95rem;
 }
 
-/* Weather */
+/* ========================================
+   Weather
+   ======================================== */
 .weather-current {
   background-color: var(--white);
   border-radius: 8px;
@@ -447,7 +452,9 @@ footer a {
   margin: 0.25rem 0 0;
 }
 
-/* Spotlights */
+/* ========================================
+   Spotlights
+   ======================================== */
 .spotlights-container {
   display: grid;
   grid-template-columns: 1fr;
@@ -496,6 +503,9 @@ footer a {
   margin-top: 0.5rem;
 }
 
+/* ========================================
+   Loading State
+   ======================================== */
 .loading {
   color: var(--muted);
   font-style: italic;
