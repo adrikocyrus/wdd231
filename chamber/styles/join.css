@@ -11,25 +11,6 @@
   gap: 2rem;
 }
 
-.join-form {
-  max-width: none;
-  margin: 0;
-}
-
-.join-form label {
-  display: flex;
-  flex-direction: column;
-  gap: 0.35rem;
-}
-
-.join-form input[type="submit"] {
-  align-self: flex-start;
-  cursor: pointer;
-  border: none;
-  margin-top: 0.5rem;
-  font-size: 1rem;
-}
-
 /* ========================================
    Membership cards + entrance animation
    ======================================== */
@@ -62,9 +43,9 @@
 .level-card:nth-of-type(3) { animation-delay: 0.5s; }
 .level-card:nth-of-type(4) { animation-delay: 0.7s; }
 
-.level-card.np     { border-top-color: #2E7D32; }
-.level-card.bronze { border-top-color: #8C5A2B; }
-.level-card.silver { border-top-color: #6B7280; }
+.level-card.np     { border-top-color: var(--np); }
+.level-card.bronze { border-top-color: var(--bronze); }
+.level-card.silver { border-top-color: var(--silver); }
 .level-card.gold   { border-top-color: var(--secondary); }
 
 .level-card h3 {
@@ -78,14 +59,8 @@
 }
 
 @keyframes cardIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 .card-link {
@@ -96,12 +71,11 @@
   font-weight: bold;
   text-decoration: underline;
   cursor: pointer;
-  font-size: 1rem;
 }
 
 .card-link:hover,
 .card-link:focus {
-  color: #000;
+  color: var(--text);
   outline: 2px solid var(--secondary);
   outline-offset: 2px;
 }
@@ -118,12 +92,8 @@ dialog {
   color: var(--text);
 }
 
-dialog:modal {
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-}
-
 dialog::backdrop {
-  background: rgba(0, 0, 0, 0.6);
+  background: var(--overlay);
 }
 
 dialog h2 {
@@ -135,10 +105,6 @@ dialog .price {
   color: var(--primary);
 }
 
-dialog ul {
-  padding-left: 1.25rem;
-}
-
 .close-modal {
   background-color: var(--primary);
   color: var(--white);
@@ -146,7 +112,6 @@ dialog ul {
   border-radius: 4px;
   padding: 0.6rem 1.25rem;
   cursor: pointer;
-  font-size: 1rem;
 }
 
 .close-modal:hover,

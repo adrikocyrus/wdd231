@@ -4,12 +4,19 @@
 :root {
   --primary: #1F3864;
   --secondary: #D4A017;
+  --secondary-hover: #F0B62A;
   --background: #F4F6F9;
   --text: #222222;
   --white: #FFFFFF;
   --border: #CCCCCC;
   --muted: #555555;
+  --np: #2E7D32;
+  --bronze: #8C5A2B;
+  --silver: #6B7280;
   --shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  --overlay: rgba(0, 0, 0, 0.6);
+  --hero-overlay: rgba(31, 56, 100, 0.92);
+  --nav-border: rgba(255, 255, 255, 0.2);
 }
 
 /* ========================================
@@ -74,7 +81,7 @@ header {
 }
 
 #menuBtn {
-  background: transparent;
+  background: none;
   border: 2px solid var(--white);
   color: var(--white);
   font-size: 1.5rem;
@@ -114,7 +121,7 @@ nav a {
   text-decoration: none;
   padding: 0.75rem 1rem;
   display: block;
-  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  border-top: 1px solid var(--nav-border);
 }
 
 nav a.active,
@@ -164,7 +171,7 @@ main {
 }
 
 /* ========================================
-   Members Container — Grid
+   Members Container
    ======================================== */
 #members.grid {
   display: grid;
@@ -172,9 +179,6 @@ main {
   gap: 1rem;
 }
 
-/* ========================================
-   Members Container — List
-   ======================================== */
 #members.list {
   display: flex;
   flex-direction: column;
@@ -188,7 +192,6 @@ main {
   padding: 0.75rem 1rem;
 }
 
-/* Hide images in list view */
 #members.list .member-card img {
   display: none;
 }
@@ -273,10 +276,6 @@ footer a {
 /* ========================================
    HOME PAGE — Hero
    ======================================== */
-
-/* Hero section: relative container that holds the image + overlay.
-   The navy background + min-height ensure the section never collapses
-   even if the image is slow or fails to load. */
 .hero {
   position: relative;
   margin: -1rem -1rem 1.5rem;
@@ -286,7 +285,6 @@ footer a {
   background-color: var(--primary);
 }
 
-/* The hero image itself — full width, capped height, cropped to fill. */
 .hero-img {
   display: block;
   width: 100%;
@@ -295,13 +293,10 @@ footer a {
   object-position: center;
 }
 
-/* Overlay sits on top of the image using absolute positioning.
-   Opacity raised to 0.92 so WCAG contrast checkers can compute
-   sufficient contrast for the white text on top. */
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background-color: rgba(31, 56, 100, 0.92);
+  background-color: var(--hero-overlay);
   color: var(--white);
   display: flex;
   flex-direction: column;
@@ -315,7 +310,6 @@ footer a {
   color: var(--white);
   font-size: 1.6rem;
   margin: 0 0 0.5rem;
-  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
 }
 
 .hero-overlay p {
@@ -323,7 +317,6 @@ footer a {
   margin: 0 0 1rem;
   font-size: 1rem;
   max-width: 32rem;
-  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
 }
 
 .cta-button {
@@ -339,7 +332,7 @@ footer a {
 
 .cta-button:hover,
 .cta-button:focus {
-  background-color: #F0B62A;
+  background-color: var(--secondary-hover);
   color: var(--primary);
   text-decoration: none;
   transform: translateY(-2px);
@@ -506,8 +499,6 @@ footer a {
   font-size: 0.9rem;
 }
 
-/* FIX #1: Changed from gold (#D4A017) to navy (#1F3864)
-   to pass WCAG AA contrast (11.62:1 on white vs 2.14:1 before). */
 .spotlight-card .level {
   font-weight: bold;
   color: var(--primary);
@@ -532,14 +523,15 @@ footer a {
   border-radius: 8px;
   padding: 1.5rem;
   box-shadow: var(--shadow);
-  max-width: 600px;
-  margin: 0 auto;
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
 }
 
 .join-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
   font-weight: bold;
   color: var(--primary);
   font-size: 0.9rem;
@@ -551,7 +543,6 @@ footer a {
   padding: 0.6rem 0.75rem;
   border: 1px solid var(--border);
   border-radius: 4px;
-  font-family: inherit;
   font-size: 1rem;
   background-color: var(--white);
   color: var(--text);
@@ -565,7 +556,7 @@ footer a {
   border-color: var(--primary);
 }
 
-.join-form button {
+.join-form input[type="submit"] {
   align-self: flex-start;
   cursor: pointer;
   border: none;
