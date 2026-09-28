@@ -1,0 +1,202 @@
+/* ========================================
+   Join page layout
+   ======================================== */
+.join-intro {
+  margin-bottom: 1.5rem;
+}
+
+.join-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+.join-form {
+  max-width: none;
+  margin: 0;
+}
+
+.join-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.join-form input[type="submit"] {
+  align-self: flex-start;
+  cursor: pointer;
+  border: none;
+  margin-top: 0.5rem;
+  font-size: 1rem;
+}
+
+/* ========================================
+   Membership cards + entrance animation
+   ======================================== */
+.membership-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.membership-cards h2 {
+  font-size: 1.35rem;
+  margin: 0;
+  border-bottom: 3px solid var(--secondary);
+  padding-bottom: 0.4rem;
+}
+
+.level-card {
+  background-color: var(--white);
+  border: 1px solid var(--border);
+  border-top: 6px solid var(--primary);
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: var(--shadow);
+  opacity: 0;
+  animation: cardIn 0.7s ease-out forwards;
+}
+
+.level-card:nth-of-type(1) { animation-delay: 0.1s; }
+.level-card:nth-of-type(2) { animation-delay: 0.3s; }
+.level-card:nth-of-type(3) { animation-delay: 0.5s; }
+.level-card:nth-of-type(4) { animation-delay: 0.7s; }
+
+.level-card.np     { border-top-color: #2E7D32; }
+.level-card.bronze { border-top-color: #8C5A2B; }
+.level-card.silver { border-top-color: #6B7280; }
+.level-card.gold   { border-top-color: var(--secondary); }
+
+.level-card h3 {
+  margin: 0 0 0.4rem;
+  color: var(--primary);
+  font-size: 1.1rem;
+}
+
+.level-card p {
+  margin: 0 0 0.75rem;
+}
+
+@keyframes cardIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.card-link {
+  background: none;
+  border: none;
+  padding: 0;
+  color: var(--primary);
+  font-weight: bold;
+  text-decoration: underline;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.card-link:hover,
+.card-link:focus {
+  color: #000;
+  outline: 2px solid var(--secondary);
+  outline-offset: 2px;
+}
+
+/* ========================================
+   Modals
+   ======================================== */
+dialog {
+  border: 2px solid var(--primary);
+  border-radius: 8px;
+  padding: 1.5rem;
+  max-width: 28rem;
+  width: calc(100% - 2rem);
+  color: var(--text);
+}
+
+dialog:modal {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+dialog::backdrop {
+  background: rgba(0, 0, 0, 0.6);
+}
+
+dialog h2 {
+  margin-top: 0;
+}
+
+dialog .price {
+  font-weight: bold;
+  color: var(--primary);
+}
+
+dialog ul {
+  padding-left: 1.25rem;
+}
+
+.close-modal {
+  background-color: var(--primary);
+  color: var(--white);
+  border: none;
+  border-radius: 4px;
+  padding: 0.6rem 1.25rem;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.close-modal:hover,
+.close-modal:focus {
+  background-color: var(--secondary);
+  color: var(--primary);
+}
+
+/* ========================================
+   Thank you page
+   ======================================== */
+.submission {
+  background-color: var(--white);
+  border: 1px solid var(--border);
+  border-left: 6px solid var(--secondary);
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: var(--shadow);
+  max-width: 600px;
+}
+
+.submission dt {
+  font-weight: bold;
+  color: var(--primary);
+  margin-top: 0.75rem;
+}
+
+.submission dd {
+  margin: 0.15rem 0 0;
+  word-break: break-word;
+}
+
+.submission .cta-button {
+  margin-top: 1.5rem;
+}
+
+/* ========================================
+   Larger screens: cards to the right of form
+   ======================================== */
+@media (min-width: 768px) {
+  .join-layout {
+    grid-template-columns: 3fr 2fr;
+    align-items: start;
+  }
+}
+
+/* Respect users who prefer less motion */
+@media (prefers-reduced-motion: reduce) {
+  .level-card {
+    animation: none;
+    opacity: 1;
+  }
+}

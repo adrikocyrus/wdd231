@@ -3,127 +3,191 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <meta
-        name="description"
-        content="Join the Kampala Chamber of Commerce and connect with local businesses in Uganda."
-    >
+    <meta name="description" content="Apply to join the Kampala Chamber of Commerce and choose a membership level that fits your business.">
     <meta name="author" content="Adriko Cyrus">
-
     <title>Kampala Chamber of Commerce | Join</title>
 
-    <!-- Favicon -->
     <link rel="icon" href="images/favicon.ico" type="image/x-icon">
 
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Poppins:wght@600;700&display=swap"
-        rel="stylesheet"
-    >
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
 
-    <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="Kampala Chamber of Commerce — Join">
-    <meta property="og:description" content="Become a member of the Kampala Chamber of Commerce.">
+    <meta property="og:description" content="Apply for membership in the Kampala Chamber of Commerce.">
     <meta property="og:image" content="https://adrikocyrus.github.io/wdd231/chamber/images/logo.svg">
     <meta property="og:url" content="https://adrikocyrus.github.io/wdd231/chamber/join.html">
     <meta property="og:type" content="website">
 
-    <!-- CSS -->
     <link rel="stylesheet" href="styles/normalize.css">
     <link rel="stylesheet" href="styles/small.css">
     <link rel="stylesheet" href="styles/larger.css">
+    <link rel="stylesheet" href="styles/join.css">
 
-    <!-- JavaScript -->
     <script src="scripts/main.js" defer></script>
+    <script src="scripts/join.js" defer></script>
 </head>
-
 <body>
-
     <header>
         <div class="logo">
-            <img
-                src="images/logo.svg"
-                alt="Kampala Chamber of Commerce logo"
-                width="60"
-                height="60"
-            >
+            <img src="images/logo.svg" alt="Kampala Chamber of Commerce logo" width="60" height="60">
             <span>Kampala Chamber</span>
         </div>
 
-        <button
-            id="menuBtn"
-            type="button"
-            aria-label="Toggle navigation menu"
-            aria-expanded="false"
-            aria-controls="primaryNav"
-        >
-            ☰
-        </button>
+        <button id="menuBtn" type="button" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="primaryNav">☰</button>
 
         <nav id="primaryNav" aria-label="Main navigation">
             <ul>
-                <li>
-                    <a href="index.html">Home</a>
-                </li>
-                <li>
-                    <a href="directory.html">Directory</a>
-                </li>
-                <li>
-                    <a href="join.html" class="active" aria-current="page">Join</a>
-                </li>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="directory.html">Directory</a></li>
+                <li><a href="join.html" class="active" aria-current="page">Join</a></li>
             </ul>
         </nav>
     </header>
 
     <main>
-        <h1>Join the Chamber</h1>
+        <h1>Join the Kampala Chamber</h1>
+        <p class="join-intro">Complete the form below to apply. Fields marked with * are required.</p>
 
-        <p>
-            Membership information and the application form are coming soon.
-        </p>
+        <div class="join-layout">
+            <!-- ============ APPLICATION FORM ============ -->
+            <form class="join-form" action="thankyou.html" method="get">
+                <label>First Name *
+                    <input type="text" name="firstName" title="Enter your first name" autocomplete="given-name" required>
+                </label>
 
-        <p>
-            In the meantime, please browse our
-            <a href="directory.html">Member Directory</a> to see the businesses
-            that already belong to the Kampala Chamber of Commerce.
-        </p>
+                <label>Last Name *
+                    <input type="text" name="lastName" title="Enter your last name" autocomplete="family-name" required>
+                </label>
+
+                <label>Organizational Title
+                    <input type="text" name="orgTitle" title="Letters, hyphens and spaces only, at least 7 characters" autocomplete="organization-title" pattern="[A-Za-z\- ]{7,}">
+                </label>
+
+                <label>Email Address *
+                    <input type="email" name="email" title="Enter your email address" autocomplete="email" placeholder="name@example.com" required>
+                </label>
+
+                <label>Mobile Phone *
+                    <input type="tel" name="phone" title="Enter your mobile phone number" autocomplete="tel" placeholder="+256 700 000 000" required>
+                </label>
+
+                <label>Business / Organization Name *
+                    <input type="text" name="organization" title="Enter your business or organization name" autocomplete="organization" required>
+                </label>
+
+                <label>Membership Level *
+                    <select name="membership" title="Choose a membership level" required>
+                        <option value="" selected disabled>Select a level</option>
+                        <option value="np">NP Membership (Non-Profit, no fee)</option>
+                        <option value="bronze">Bronze Membership</option>
+                        <option value="silver">Silver Membership</option>
+                        <option value="gold">Gold Membership</option>
+                    </select>
+                </label>
+
+                <label>Business Description
+                    <textarea name="description" rows="4" title="Briefly describe your business or organization"></textarea>
+                </label>
+
+                <input type="hidden" name="timestamp" id="timestamp">
+
+                <input type="submit" value="Submit Application" class="cta-button">
+            </form>
+
+            <!-- ============ MEMBERSHIP CARDS ============ -->
+            <section class="membership-cards" aria-labelledby="levelsHeading">
+                <h2 id="levelsHeading">Membership Levels</h2>
+
+                <article class="level-card np">
+                    <h3>NP Membership</h3>
+                    <p>For non-profit organizations. No fee.</p>
+                    <button type="button" class="card-link" data-modal="modal-np">View benefits</button>
+                </article>
+
+                <article class="level-card bronze">
+                    <h3>Bronze Membership</h3>
+                    <p>An affordable start for small businesses.</p>
+                    <button type="button" class="card-link" data-modal="modal-bronze">View benefits</button>
+                </article>
+
+                <article class="level-card silver">
+                    <h3>Silver Membership</h3>
+                    <p>More visibility and more savings.</p>
+                    <button type="button" class="card-link" data-modal="modal-silver">View benefits</button>
+                </article>
+
+                <article class="level-card gold">
+                    <h3>Gold Membership</h3>
+                    <p>Our premium package with top placement.</p>
+                    <button type="button" class="card-link" data-modal="modal-gold">View benefits</button>
+                </article>
+            </section>
+        </div>
+
+        <!-- ============ MODALS ============ -->
+        <dialog id="modal-np" aria-labelledby="modal-np-title">
+            <h2 id="modal-np-title">NP Membership</h2>
+            <p class="price">Fee: Free</p>
+            <ul>
+                <li>Listing in the member directory</li>
+                <li>Invitations to networking events</li>
+                <li>Monthly chamber newsletter</li>
+            </ul>
+            <button type="button" class="close-modal">Close</button>
+        </dialog>
+
+        <dialog id="modal-bronze" aria-labelledby="modal-bronze-title">
+            <h2 id="modal-bronze-title">Bronze Membership</h2>
+            <p class="price">Fee: UGX 250,000 per year</p>
+            <ul>
+                <li>Everything in NP Membership</li>
+                <li>Discounts on chamber events</li>
+                <li>Access to one training workshop per year</li>
+            </ul>
+            <button type="button" class="close-modal">Close</button>
+        </dialog>
+
+        <dialog id="modal-silver" aria-labelledby="modal-silver-title">
+            <h2 id="modal-silver-title">Silver Membership</h2>
+            <p class="price">Fee: UGX 500,000 per year</p>
+            <ul>
+                <li>Everything in Bronze Membership</li>
+                <li>Larger event discounts</li>
+                <li>Three training workshops per year</li>
+                <li>Social media advertising on chamber channels</li>
+            </ul>
+            <button type="button" class="close-modal">Close</button>
+        </dialog>
+
+        <dialog id="modal-gold" aria-labelledby="modal-gold-title">
+            <h2 id="modal-gold-title">Gold Membership</h2>
+            <p class="price">Fee: UGX 1,000,000 per year</p>
+            <ul>
+                <li>Everything in Silver Membership</li>
+                <li>Spotlight position on the home page</li>
+                <li>Free entry to all chamber events</li>
+                <li>Unlimited training workshops</li>
+                <li>Priority booth space at the Business Expo</li>
+            </ul>
+            <button type="button" class="close-modal">Close</button>
+        </dialog>
     </main>
 
     <footer>
         <div class="contact-info">
+            <p><strong>Kampala Chamber of Commerce</strong></p>
+            <p>Plot 10, Kampala Boulevard, Kampala, Uganda</p>
             <p>
-                <strong>Kampala Chamber of Commerce</strong>
-            </p>
-
-            <p>
-                Plot 10, Kampala Boulevard, Kampala, Uganda
-            </p>
-
-            <p>
-                <a href="mailto:info@kampalachamber.org">
-                    info@kampalachamber.org
-                </a>
-                |
-                <a href="tel:+256414000000">
-                    +256 414 000 000
-                </a>
+                <a href="mailto:info@kampalachamber.org">info@kampalachamber.org</a> |
+                <a href="tel:+256414000000">+256 414 000 000</a>
             </p>
         </div>
 
         <div class="dev-info">
-            <p>
-                &copy; <span id="year"></span>
-                Adriko Cyrus | WDD 231
-            </p>
-
-            <p>
-                Last Modified:
-                <span id="lastModified"></span>
-            </p>
+            <p>&copy; <span id="year"></span> Adriko Cyrus | WDD 231</p>
+            <p>Last Modified: <span id="lastModified"></span></p>
         </div>
     </footer>
-
 </body>
 </html>
