@@ -1,0 +1,99 @@
+:root {
+  --primary: #14532d;
+  --accent: #f5b700;
+  --text: #1f2933;
+  --bg: #fdfaf3;
+  --white: #ffffff;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: "Open Sans", sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.6;
+}
+
+h1, h2, h3 {
+  font-family: "Poppins", sans-serif;
+  color: var(--primary);
+  line-height: 1.25;
+}
+
+header {
+  background: var(--primary);
+  color: var(--white);
+  padding: 1.5rem 1rem;
+  border-bottom: 6px solid var(--accent);
+}
+header h1 { color: var(--white); margin: 0 0 .25rem; }
+header p { margin: 0; }
+
+main { max-width: 60rem; margin: 0 auto; padding: 1rem; }
+
+section {
+  background: var(--white);
+  border: 1px solid var(--primary);
+  border-left: 6px solid var(--accent);
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  margin: 1.5rem 0;
+}
+section h2 { margin-top: 0; }
+
+.swatches {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr;
+  padding: 0;
+  list-style: none;
+}
+.swatches li {
+  border: 1px solid var(--primary);
+  border-radius: 8px;
+  overflow: hidden;
+}
+.chip { display: block; height: 3.5rem; border-bottom: 1px solid var(--primary); }
+.chip.primary { background: var(--primary); }
+.chip.accent  { background: var(--accent); }
+.chip.text    { background: var(--text); }
+.chip.bg      { background: var(--bg); }
+.chip.white   { background: var(--white); }
+.swatches div { padding: .5rem .75rem; }
+
+.font-sample.heading {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: var(--primary);
+}
+.font-sample.body { font-family: "Open Sans", sans-serif; }
+
+figure { margin: 1rem 0; }
+figure img {
+  max-width: 100%;
+  height: auto;
+  border: 2px solid var(--primary);
+  background: var(--white);
+}
+figcaption { font-weight: 600; color: var(--primary); margin-top: .25rem; }
+
+footer {
+  background: var(--primary);
+  color: var(--white);
+  text-align: center;
+  padding: 1rem;
+  border-top: 6px solid var(--accent);
+}
+
+@media (min-width: 768px) {
+  .swatches { grid-template-columns: repeat(3, 1fr); }
+  .wire {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 1rem;
+    align-items: start;
+  }
+}

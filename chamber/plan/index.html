@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Website plan for the Kampala Chamber of Commerce.">
+    <meta name="author" content="Adriko Cyrus">
+    <title>Site Plan | Kampala Chamber of Commerce</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/plan.css">
+</head>
+<body>
+    <header>
+        <h1>Website Plan</h1>
+        <p>Kampala Chamber of Commerce &mdash; prepared by Adriko Cyrus</p>
+    </header>
+
+    <main>
+        <section id="site-name">
+            <h2>Site Name</h2>
+            <p><strong>Kampala Chamber of Commerce</strong></p>
+            <p>The name tells visitors right away that the site serves businesses in Kampala, Uganda, and it matches how the organization would be recognized and searched for locally.</p>
+        </section>
+
+        <section id="site-purpose">
+            <h2>Site Purpose</h2>
+            <p>The site is a hub that connects local businesses, events, and opportunities in Kampala. It provides a member directory that visitors can browse, current chamber news and events, and a membership application form with details on the NP, Bronze, Silver, and Gold levels.</p>
+        </section>
+
+        <section id="scenarios">
+            <h2>Scenarios</h2>
+            <ul>
+                <li>How can I find a trusted local business in a particular industry?</li>
+                <li>What does it cost to become a member, and what benefits do I get at each level?</li>
+                <li>What chamber events are coming up, and how can I attend?</li>
+                <li>How do I contact the chamber's office?</li>
+            </ul>
+        </section>
+
+        <section id="color-scheme">
+            <h2>Color Scheme</h2>
+            <p>These colors are used on this document and are planned for the full site.</p>
+            <ul class="swatches">
+                <li><span class="chip primary"></span><div><strong>Primary green #14532d</strong><br>Headings, header and footer backgrounds, links, borders.</div></li>
+                <li><span class="chip accent"></span><div><strong>Accent gold #f5b700</strong><br>Accent stripes, card borders, button hover states.</div></li>
+                <li><span class="chip text"></span><div><strong>Text charcoal #1f2933</strong><br>Paragraph and list text.</div></li>
+                <li><span class="chip bg"></span><div><strong>Background cream #fdfaf3</strong><br>Page background.</div></li>
+                <li><span class="chip white"></span><div><strong>White #ffffff</strong><br>Section and card backgrounds, text on green.</div></li>
+            </ul>
+        </section>
+
+        <section id="typography">
+            <h2>Typography</h2>
+            <p class="font-sample heading">Poppins (600 and 700)</p>
+            <p>Used for the site name, page headings, and subheadings.</p>
+            <p class="font-sample body">Open Sans (400 and 600)</p>
+            <p>Used for body text, navigation, forms, and lists because it stays easy to read at small sizes.</p>
+        </section>
+
+        <section id="wireframe">
+            <h2>Wireframe</h2>
+            <p>Black and white sketches of the home page for small and large screens.</p>
+            <div class="wire">
+                <figure>
+                    <img src="images/wireframe-small.png" alt="Hand-drawn wireframe of the home page on a small screen, with a stacked layout" width="300" height="600">
+                    <figcaption>Small view (mobile)</figcaption>
+                </figure>
+                <figure>
+                    <img src="images/wireframe-large.png" alt="Hand-drawn wireframe of the home page on a large screen, with content in columns" width="900" height="600">
+                    <figcaption>Large view (desktop/tablet)</figcaption>
+                </figure>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; <span id="year"></span> Adriko Cyrus | WDD 231</p>
+        <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+    </footer>
+</body>
+</html>
