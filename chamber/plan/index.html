@@ -1,83 +1,280 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Website plan for the Kampala Chamber of Commerce.">
-    <meta name="author" content="Adriko Cyrus">
-    <title>Site Plan | Kampala Chamber of Commerce</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles/plan.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Site plan for the Automobile Mechanic Learning Hub individual WDD231 project.">
+  <meta name="author" content="Adriko Cyrus">
+  <title>Automobile Mechanic Learning Hub | Site Plan</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="styles/plan.css">
 </head>
 <body>
-    <header>
-        <h1>Website Plan</h1>
-        <p>Kampala Chamber of Commerce &mdash; prepared by Adriko Cyrus</p>
-    </header>
 
-    <main>
-        <section id="site-name">
-            <h2>Site Name</h2>
-            <p><strong>Kampala Chamber of Commerce</strong></p>
-            <p>The name tells visitors right away that the site serves businesses in Kampala, Uganda, and it matches how the organization would be recognized and searched for locally.</p>
-        </section>
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="container">
+      <p class="eyebrow">WDD231 Individual Project</p>
+      <h1>Automobile Mechanic Learning Hub</h1>
+      <p class="subtitle">Website Site Plan</p>
+    </div>
+  </header>
 
-        <section id="site-purpose">
-            <h2>Site Purpose</h2>
-            <p>The site is a hub that connects local businesses, events, and opportunities in Kampala. It provides a member directory that visitors can browse, current chamber news and events, and a membership application form with details on the NP, Bronze, Silver, and Gold levels.</p>
-        </section>
+  <!-- NAVIGATION -->
+  <nav class="site-nav" aria-label="Site plan navigation">
+    <div class="container nav-inner">
+      <a href="#site-name">Site Name</a>
+      <a href="#purpose">Purpose</a>
+      <a href="#scenarios">Scenarios</a>
+      <a href="#colors">Colors</a>
+      <a href="#typography">Typography</a>
+      <a href="#wireframe">Wireframe</a>
+    </div>
+  </nav>
 
-        <section id="scenarios">
-            <h2>Scenarios</h2>
-            <ul>
-                <li>How can I find a trusted local business in a particular industry?</li>
-                <li>What does it cost to become a member, and what benefits do I get at each level?</li>
-                <li>What chamber events are coming up, and how can I attend?</li>
-                <li>How do I contact the chamber's office?</li>
-            </ul>
-        </section>
+  <!-- MAIN CONTENT -->
+  <main class="container">
 
-        <section id="color-scheme">
-            <h2>Color Scheme</h2>
-            <p>These colors are used on this document and are planned for the full site.</p>
-            <ul class="swatches">
-                <li><span class="chip primary"></span><div><strong>Primary green #14532d</strong><br>Headings, header and footer backgrounds, links, borders.</div></li>
-                <li><span class="chip accent"></span><div><strong>Accent gold #f5b700</strong><br>Accent stripes, card borders, button hover states.</div></li>
-                <li><span class="chip text"></span><div><strong>Text charcoal #1f2933</strong><br>Paragraph and list text.</div></li>
-                <li><span class="chip bg"></span><div><strong>Background cream #fdfaf3</strong><br>Page background.</div></li>
-                <li><span class="chip white"></span><div><strong>White #ffffff</strong><br>Section and card backgrounds, text on green.</div></li>
-            </ul>
-        </section>
+    <!-- 1. SITE NAME -->
+    <section id="site-name" class="plan-section">
+      <h2>1. Site Name</h2>
+      <h3>Automobile Mechanic Learning Hub</h3>
+      <p>
+        The <strong>Automobile Mechanic Learning Hub</strong> is a website designed to provide useful
+        learning resources and information for people interested in automobile mechanics.
+      </p>
+      <p>
+        The name was selected because it clearly describes the purpose of the website: helping students,
+        beginner mechanics, vehicle owners, and other interested users learn about vehicle maintenance,
+        repair, and mechanical systems.
+      </p>
+      <p>
+        <strong>Proposed domain:</strong> <code>automobilemechanichub.com</code>
+      </p>
+    </section>
 
-        <section id="typography">
-            <h2>Typography</h2>
-            <p class="font-sample heading">Poppins (600 and 700)</p>
-            <p>Used for the site name, page headings, and subheadings.</p>
-            <p class="font-sample body">Open Sans (400 and 600)</p>
-            <p>Used for body text, navigation, forms, and lists because it stays easy to read at small sizes.</p>
-        </section>
+    <!-- 2. SITE PURPOSE -->
+    <section id="purpose" class="plan-section">
+      <h2>2. Site Purpose</h2>
+      <p>
+        The purpose of the <strong>Automobile Mechanic Learning Hub</strong> is to provide a simple online
+        learning resource for students, beginner mechanics, vehicle owners, and people interested in
+        understanding automobile systems.
+      </p>
+      <p>
+        The website will provide information about common vehicle components, maintenance procedures,
+        mechanical problems, and basic repair knowledge.
+      </p>
+      <p>
+        Users will be able to browse different automotive topics, learn about vehicle systems, and save
+        useful topics for later reference.
+      </p>
+      <p>
+        The website will focus on presenting technical information in a simple and understandable way so
+        that beginners can use it as a learning resource.
+      </p>
+    </section>
 
-        <section id="wireframe">
-            <h2>Wireframe</h2>
-            <p>Black and white sketches of the home page for small and large screens.</p>
-            <div class="wire">
-                <figure>
-                    <img src="images/wireframe-small.png" alt="Hand-drawn wireframe of the home page on a small screen, with a stacked layout" width="300" height="600">
-                    <figcaption>Small view (mobile)</figcaption>
-                </figure>
-                <figure>
-                    <img src="images/wireframe-large.png" alt="Hand-drawn wireframe of the home page on a large screen, with content in columns" width="900" height="600">
-                    <figcaption>Large view (desktop/tablet)</figcaption>
-                </figure>
+    <!-- 3. SCENARIOS -->
+    <section id="scenarios" class="plan-section">
+      <h2>3. Scenarios</h2>
+      <p>These questions represent the types of questions visitors to the website may have:</p>
+      <ul>
+        <li>What are the main parts of a vehicle engine, and what does each part do?</li>
+        <li>How can I identify common problems with my vehicle?</li>
+        <li>What regular maintenance should I perform on my car?</li>
+        <li>How can I learn the basics of automobile mechanics?</li>
+        <li>Which automobile systems should a beginner mechanic learn first?</li>
+      </ul>
+    </section>
+
+    <!-- 4. COLOR SCHEME -->
+    <section id="colors" class="plan-section">
+      <h2>4. Color Scheme</h2>
+      <p>
+        The website will use a simple automotive-inspired color scheme that provides good contrast and
+        makes the content easy to read.
+      </p>
+
+      <div class="color-grid">
+        <!-- DARK BLUE -->
+        <article class="color-card">
+          <div class="swatch primary-swatch">#1F3864</div>
+          <h3>Dark Blue — Primary</h3>
+          <p>Used for the header, main headings, navigation, footer, and important interface elements.</p>
+        </article>
+
+        <!-- GOLD -->
+        <article class="color-card">
+          <div class="swatch gold-swatch">#D4A017</div>
+          <h3>Gold — Secondary</h3>
+          <p>Used for buttons, links, section accents, borders, highlights, and interactive elements.</p>
+        </article>
+
+        <!-- LIGHT GRAY -->
+        <article class="color-card">
+          <div class="swatch background-swatch">#F4F6F9</div>
+          <h3>Light Gray — Background</h3>
+          <p>Used for the main page background and content areas to create a clean reading environment.</p>
+        </article>
+
+        <!-- DARK GRAY -->
+        <article class="color-card">
+          <div class="swatch text-swatch">#222222</div>
+          <h3>Dark Gray — Text</h3>
+          <p>Used for normal paragraphs and general content to provide strong readability.</p>
+        </article>
+      </div>
+
+      <!-- COLOR DEMONSTRATION -->
+      <div class="color-demo">
+        <h3>Color Usage Example</h3>
+        <p>
+          <span class="accent-text">Interactive elements</span> will use gold accents, while the main
+          navigation and headings will use dark blue.
+        </p>
+        <a class="demo-button" href="#wireframe">Example Button</a>
+      </div>
+    </section>
+
+    <!-- 5. TYPOGRAPHY -->
+    <section id="typography" class="plan-section">
+      <h2>5. Typography</h2>
+
+      <!-- POPPINS -->
+      <div class="type-card">
+        <h3 class="poppins-sample">Poppins — Headings</h3>
+        <p>
+          Poppins will be used for main headings, section headings, navigation labels, and important
+          titles. Its modern appearance supports a clean and professional visual identity.
+        </p>
+      </div>
+
+      <!-- ROBOTO -->
+      <div class="type-card">
+        <h3 class="roboto-sample">Roboto — Body Text</h3>
+        <p class="roboto-sample">
+          Roboto will be used for paragraphs, descriptions, lists, form labels, and general website
+          content. It is easy to read on both mobile and desktop screens.
+        </p>
+      </div>
+    </section>
+
+    <!-- 6. WIREFRAME -->
+    <section id="wireframe" class="plan-section">
+      <h2>6. Wireframe</h2>
+      <p>
+        The wireframes show the planned structure of the responsive website before detailed colors,
+        images, and functionality are added.
+      </p>
+
+      <div class="wireframes">
+
+        <!-- MOBILE WIREFRAME -->
+        <article class="wireframe-card">
+          <h3>Mobile Wireframe</h3>
+          <div class="wireframe mobile-frame" aria-label="Mobile website wireframe">
+            <div class="wf-box wf-header">
+              LOGO <br>
+              <small>Automobile Mechanic Learning Hub</small>
             </div>
-        </section>
-    </main>
+            <div class="wf-box wf-nav">MENU ☰</div>
+            <div class="wf-box wf-hero">
+              HERO / INTRODUCTION <br>
+              <small>Learn Automobile Mechanics</small> <br>
+              <span>[ Explore ]</span>
+            </div>
+            <div class="wf-box wf-content">
+              <strong>LEARNING TOPICS</strong>
+              <div class="wf-mini">Engine Systems</div>
+              <div class="wf-mini">Electrical Systems</div>
+              <div class="wf-mini">Brake Systems</div>
+            </div>
+            <div class="wf-box">FEATURED RESOURCE</div>
+            <div class="wf-box wf-footer">FOOTER</div>
+          </div>
+        </article>
 
-    <footer>
-        <p>&copy; <span id="year"></span> Adriko Cyrus | WDD 231</p>
-        <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
-    </footer>
+        <!-- DESKTOP WIREFRAME -->
+        <article class="wireframe-card">
+          <h3>Desktop Wireframe</h3>
+          <div class="wireframe desktop-frame" aria-label="Desktop website wireframe">
+            <div class="wf-box wf-header">LOGO &nbsp; Automobile Mechanic Learning Hub</div>
+            <div class="wf-box wf-nav">
+              Home &nbsp; | &nbsp; Topics &nbsp; | &nbsp; Maintenance &nbsp; | &nbsp; Favorites &nbsp; | &nbsp; About
+            </div>
+            <div class="wf-box wf-hero">
+              HERO / INTRODUCTION <br>
+              <small>Learn the Basics of Automobile Mechanics</small> <br>
+              <span>[ Explore Topics ]</span>
+            </div>
+            <div class="wf-box wf-content">
+              <strong>LEARNING TOPICS</strong>
+              <div class="wf-columns">
+                <div class="wf-mini">Engine Systems</div>
+                <div class="wf-mini">Brake Systems</div>
+                <div class="wf-mini">Electrical Systems</div>
+                <div class="wf-mini">Transmission</div>
+                <div class="wf-mini">Suspension</div>
+                <div class="wf-mini">Maintenance</div>
+              </div>
+            </div>
+            <div class="wf-box">FEATURED INFORMATION</div>
+            <div class="wf-box wf-footer">FOOTER</div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- 7. RESPONSIVE DESIGN -->
+    <section class="plan-section">
+      <h2>7. Responsive Design</h2>
+      <p>
+        The website will use a mobile-first approach. On smaller screens, content will be displayed in a
+        single-column layout to make it easy to read and navigate.
+      </p>
+      <p>
+        On larger screens, content will expand into multiple columns where appropriate.
+      </p>
+      <p>
+        The website will support screen widths of at least <strong>320px</strong> and will maintain
+        usability on both mobile devices and desktop computers.
+      </p>
+    </section>
+
+    <!-- 8. PLANNED FEATURES -->
+    <section class="plan-section">
+      <h2>8. Planned Website Features</h2>
+      <ul class="feature-list">
+        <li>Responsive navigation</li>
+        <li>Automotive learning topic cards</li>
+        <li>Vehicle system information</li>
+        <li>Search or filtering functionality</li>
+        <li>Favorites functionality using local storage</li>
+        <li>Images related to automobile components</li>
+        <li>Interactive buttons and user interface elements</li>
+        <li>A form for collecting user information where appropriate</li>
+        <li>Dynamic content generated with JavaScript</li>
+        <li>Responsive layouts for mobile and desktop screens</li>
+      </ul>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <p>Automobile Mechanic Learning Hub &copy; 2026 | WDD231 Individual Project Site Plan</p>
+      <p>Student: Adriko Cyrus</p>
+    </div>
+  </footer>
+
 </body>
 </html>
