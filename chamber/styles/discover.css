@@ -1,0 +1,176 @@
+/* ========================================
+   Discover page — grid-template-areas layout
+   ======================================== */
+
+.discover-intro {
+  margin-bottom: 1.5rem;
+  max-width: 60ch;
+}
+
+/* ---------- Visitor message ---------- */
+.visit-message {
+  background-color: var(--secondary);
+  color: var(--primary);
+  font-weight: bold;
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  border-left: 6px solid var(--primary);
+  margin-bottom: 1.5rem;
+  box-shadow: var(--shadow);
+}
+
+/* ---------- Grid container ---------- */
+.discover-grid {
+  display: grid;
+  gap: 1rem;
+
+  /* SMALL SCREENS (320px – 640px): single column, stacked */
+  grid-template-areas:
+    "card1"
+    "card2"
+    "card3"
+    "card4"
+    "card5"
+    "card6"
+    "card7"
+    "card8";
+}
+
+/* Assign each card to its named area */
+.discover-grid .card:nth-child(1) { grid-area: card1; }
+.discover-grid .card:nth-child(2) { grid-area: card2; }
+.discover-grid .card:nth-child(3) { grid-area: card3; }
+.discover-grid .card:nth-child(4) { grid-area: card4; }
+.discover-grid .card:nth-child(5) { grid-area: card5; }
+.discover-grid .card:nth-child(6) { grid-area: card6; }
+.discover-grid .card:nth-child(7) { grid-area: card7; }
+.discover-grid .card:nth-child(8) { grid-area: card8; }
+
+/* ---------- Card styling ---------- */
+.discover-grid .card {
+  background-color: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.discover-grid .card h2 {
+  font-size: 1.15rem;
+  margin: 0;
+  color: var(--primary);
+}
+
+.discover-grid .card figure {
+  margin: 0;
+  overflow: hidden;
+  border-radius: 6px;
+}
+
+.discover-grid .card figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+}
+
+.discover-grid .card address {
+  font-style: normal;
+  font-size: 0.85rem;
+  color: var(--muted);
+  border-left: 3px solid var(--secondary);
+  padding-left: 0.5rem;
+}
+
+.discover-grid .card p {
+  margin: 0;
+  font-size: 0.95rem;
+  flex-grow: 1;
+}
+
+.discover-grid .card button {
+  align-self: flex-start;
+  background-color: var(--primary);
+  color: var(--white);
+  border: none;
+  border-radius: 4px;
+  padding: 0.5rem 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.15s ease, transform 0.15s ease;
+}
+
+.discover-grid .card button:hover,
+.discover-grid .card button:focus {
+  background-color: var(--secondary);
+  color: var(--primary);
+  transform: translateY(-2px);
+}
+
+/* ========================================
+   MEDIUM SCREENS (641px – 1024px)
+   Asymmetric two-column magazine layout
+   ======================================== */
+@media (min-width: 641px) {
+  .discover-grid {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "card1 card2"
+      "card1 card3"
+      "card4 card5"
+      "card6 card5"
+      "card7 card8";
+  }
+
+  /* Make card1 and card5 visually larger features */
+  .discover-grid .card:nth-child(1) figure img,
+  .discover-grid .card:nth-child(5) figure img {
+    aspect-ratio: 4 / 3;
+  }
+}
+
+/* ========================================
+   LARGE SCREENS (1025px and above)
+   Magazine-style feature grid
+   ======================================== */
+@media (min-width: 1025px) {
+  .discover-grid {
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-areas:
+      "card1 card1 card2 card2"
+      "card3 card4 card4 card5"
+      "card6 card7 card8 card8";
+  }
+}
+
+/* ========================================
+   HOVER EFFECT on images — desktop only
+   (Not applied in mobile view)
+   ======================================== */
+@media (min-width: 641px) {
+  .discover-grid .card figure {
+    position: relative;
+  }
+
+  .discover-grid .card figure img {
+    transition: transform 0.4s ease, filter 0.4s ease;
+  }
+
+  .discover-grid .card figure:hover img,
+  .discover-grid .card figure:focus-within img {
+    transform: scale(1.06);
+    filter: brightness(1.1) saturate(1.25);
+  }
+}
+
+/* Respect reduced-motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .discover-grid .card figure img,
+  .discover-grid .card button {
+    transition: none;
+  }
+}
