@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Learning Topics | Automobile Mechanic Learning Hub</title>
+<meta name="description" content="Browse and search 18 automobile mechanics topics. Filter by vehicle system or experience level and save favorites.">
+<meta name="author" content="Adriko Cyrus">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Learning Topics | Automobile Mechanic Learning Hub">
+<meta property="og:description" content="Browse and search 18 automobile mechanics topics. Filter by vehicle system or experience level and save favorites.">
+<meta property="og:image" content="https://adrikocyrus.github.io/wdd231/finalproject/images/engine.svg">
+<meta property="og:url" content="https://adrikocyrus.github.io/wdd231/finalproject/topics.html">
+<link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles/styles.css">
+</head>
+<body>
+<a class="skip-link" href="#content">Skip to main content</a>
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="index.html"><img src="images/favicon.svg" alt="" width="40" height="40"><span>Automobile Mechanic Learning Hub</span></a>
+    <button type="button" class="menu-toggle" aria-expanded="false" aria-controls="main-menu"><span aria-hidden="true">&#9776;</span> Menu</button>
+    <nav aria-label="Main navigation">
+      <ul id="main-menu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="topics.html" aria-current="page">Topics</a></li>
+        <li><a href="favorites.html">Favorites</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="content" class="container">
+  <h1>Learning topics</h1>
+  <p>Search or filter the topics, open a topic for more detail, and save the ones you want to revisit.</p>
+  <form class="filters" role="search" onsubmit="return false">
+    <div class="field">
+      <label for="search">Search</label>
+      <input type="search" id="search" placeholder="For example: oil">
+    </div>
+    <div class="field">
+      <label for="system-filter">Vehicle system</label>
+      <select id="system-filter"><option value="all">All systems</option></select>
+    </div>
+    <div class="field">
+      <label for="level-filter">Level</label>
+      <select id="level-filter">
+        <option value="all">All levels</option>
+        <option>Beginner</option>
+        <option>Intermediate</option>
+        <option>Advanced</option>
+      </select>
+    </div>
+  </form>
+  <p id="result-count" class="count" aria-live="polite"></p>
+  <div id="topic-list" class="card-grid"></div>
+</main>
+
+<dialog id="topic-dialog" aria-labelledby="dialog-title">
+  <button type="button" class="dialog-close" aria-label="Close dialog">&times;</button>
+  <div class="dialog-body"></div>
+</dialog>
+
+<footer class="site-footer">
+  <div class="container">
+    <p>&copy; <span id="year">2026</span> Automobile Mechanic Learning Hub | Adriko Cyrus | WDD231</p>
+    <p><a href="attributions.html">Attributions</a> | <a href="https://www.youtube.com/" rel="noopener">Project video</a></p>
+  </div>
+</footer>
+<script type="module" src="js/nav.js"></script>
+<script type="module" src="js/topics.js"></script>
+</body>
+</html>

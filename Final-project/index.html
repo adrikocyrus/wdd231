@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Automobile Mechanic Learning Hub | Home</title>
+<meta name="description" content="Learn how engines, brakes, electrical systems and more work with simple automobile mechanics topics for beginners.">
+<meta name="author" content="Adriko Cyrus">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Automobile Mechanic Learning Hub | Home">
+<meta property="og:description" content="Learn how engines, brakes, electrical systems and more work with simple automobile mechanics topics for beginners.">
+<meta property="og:image" content="https://adrikocyrus.github.io/wdd231/finalproject/images/engine.svg">
+<meta property="og:url" content="https://adrikocyrus.github.io/wdd231/finalproject/index.html">
+<link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles/styles.css">
+</head>
+<body>
+<a class="skip-link" href="#content">Skip to main content</a>
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="index.html"><img src="images/favicon.svg" alt="" width="40" height="40"><span>Automobile Mechanic Learning Hub</span></a>
+    <button type="button" class="menu-toggle" aria-expanded="false" aria-controls="main-menu"><span aria-hidden="true">&#9776;</span> Menu</button>
+    <nav aria-label="Main navigation">
+      <ul id="main-menu">
+        <li><a href="index.html" aria-current="page">Home</a></li>
+        <li><a href="topics.html">Topics</a></li>
+        <li><a href="favorites.html">Favorites</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="content" class="container">
+  <section class="hero">
+    <h1>Learn how your vehicle really works</h1>
+    <p>Clear, beginner-friendly lessons on engines, brakes, electrical systems, transmissions, suspension and routine maintenance.</p>
+    <a class="btn" href="topics.html">Explore topics</a>
+  </section>
+
+  <section aria-labelledby="featured-heading">
+    <h2 id="featured-heading">Start with the basics</h2>
+    <div id="featured-topics" class="card-grid" aria-live="polite"></div>
+  </section>
+
+  <section aria-labelledby="request-heading" class="panel">
+    <h2 id="request-heading">Request a topic</h2>
+    <p>Tell us what you want to learn next.</p>
+    <form action="thanks.html" method="get">
+      <div class="field">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" required autocomplete="name">
+      </div>
+      <div class="field">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required autocomplete="email">
+      </div>
+      <div class="field">
+        <label for="system">Topic area</label>
+        <select id="system" name="system" required>
+          <option value="" disabled selected>Choose an area</option>
+          <option>Engine Systems</option>
+          <option>Brake Systems</option>
+          <option>Electrical Systems</option>
+          <option>Transmission</option>
+          <option>Suspension</option>
+          <option>Maintenance</option>
+        </select>
+      </div>
+      <fieldset>
+        <legend>Experience level</legend>
+        <label><input type="radio" name="level" value="Beginner" checked> Beginner</label>
+        <label><input type="radio" name="level" value="Intermediate"> Intermediate</label>
+        <label><input type="radio" name="level" value="Advanced"> Advanced</label>
+      </fieldset>
+      <div class="field">
+        <label for="message">What would you like to learn?</label>
+        <textarea id="message" name="message" rows="4" required minlength="10"></textarea>
+      </div>
+      <button type="submit" class="btn">Send request</button>
+    </form>
+  </section>
+</main>
+
+<dialog id="topic-dialog" aria-labelledby="dialog-title">
+  <button type="button" class="dialog-close" aria-label="Close dialog">&times;</button>
+  <div class="dialog-body"></div>
+</dialog>
+
+<footer class="site-footer">
+  <div class="container">
+    <p>&copy; <span id="year">2026</span> Automobile Mechanic Learning Hub | Adriko Cyrus | WDD231</p>
+    <p><a href="attributions.html">Attributions</a> | <a href="https://www.youtube.com/" rel="noopener">Project video</a></p>
+  </div>
+</footer>
+<script type="module" src="js/nav.js"></script>
+<script type="module" src="js/home.js"></script>
+</body>
+</html>
