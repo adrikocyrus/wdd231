@@ -4,7 +4,7 @@ export function cardTemplate(topic) {
   const saved = isFavorite(topic.id);
   return `
     <article class="topic-card" data-id="${topic.id}">
-      <img src="images/${topic.system}.svg" alt="" width="64" height="64" loading="lazy">
+    <img src="images/${topic.system}.webp" alt="${topic.systemLabel} component" width="600" height="400" loading="lazy">
       <h3>${topic.title}</h3>
       <p class="meta"><span class="tag">${topic.systemLabel}</span> <span class="tag level-${topic.level.toLowerCase()}">${topic.level}</span></p>
       <p>${topic.summary}</p>

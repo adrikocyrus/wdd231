@@ -52,7 +52,7 @@ main { padding: 2rem 0 3rem; }
 
 .card-grid { display: grid; grid-template-columns: 1fr; gap: 1rem; }
 .topic-card { background: var(--white); border: 1px solid var(--border); border-top: 4px solid var(--gold); border-radius: 8px; padding: 1rem; display: flex; flex-direction: column; }
-.topic-card img { width: 64px; height: 64px; }
+.topic-card img { width: 100%; height: auto; border-radius: 6px; }
 .topic-card p { margin: 0.4rem 0; }
 .meta { display: flex; flex-wrap: wrap; gap: 0.4rem; }
 .tag { background: var(--bg); border: 1px solid var(--border); border-radius: 4px; padding: 0.1rem 0.5rem; font-size: 0.85rem; }
