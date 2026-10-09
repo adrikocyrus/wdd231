@@ -7,10 +7,10 @@
 <meta name="description" content="Browse and search 18 automobile mechanics topics. Filter by vehicle system or experience level and save favorites.">
 <meta name="author" content="Adriko Cyrus">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Learning Topics | Automobile Mechanic Learning Hub">
+<meta property="og:title" content="Explore Learning Topics | Automobile Mechanic Learning Hub">
 <meta property="og:description" content="Browse and search 18 automobile mechanics topics. Filter by vehicle system or experience level and save favorites.">
-<meta property="og:image" content="https://adrikocyrus.github.io/wdd231/finalproject/images/engine.svg">
-<meta property="og:url" content="https://adrikocyrus.github.io/wdd231/finalproject/topics.html">
+<meta property="og:image" content="https://adrikocyrus.github.io/wdd231/Final-project/images/engine.webp">
+<meta property="og:url" content="https://adrikocyrus.github.io/wdd231/Final-project/topics.html">
 <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -36,7 +36,7 @@
 <main id="content" class="container">
   <h1>Learning topics</h1>
   <p>Search or filter the topics, open a topic for more detail, and save the ones you want to revisit.</p>
-  <form class="filters" role="search" onsubmit="return false">
+  <form id="topic-filters" class="filters" role="search">
     <div class="field">
       <label for="search">Search</label>
       <input type="search" id="search" placeholder="For example: oil">
@@ -61,7 +61,7 @@
 
 <dialog id="topic-dialog" aria-labelledby="dialog-title">
   <button type="button" class="dialog-close" aria-label="Close dialog">&times;</button>
-  <div class="dialog-body"></div>
+  <div class="dialog-body"><h2 id="dialog-title" class="visually-hidden">Topic details</h2></div>
 </dialog>
 
 <footer class="site-footer">
