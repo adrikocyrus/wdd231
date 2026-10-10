@@ -7,7 +7,9 @@ const systemSelect = document.querySelector("#system-filter");
 const levelSelect = document.querySelector("#level-filter");
 const searchInput = document.querySelector("#search");
 const count = document.querySelector("#result-count");
+const filtersForm = document.querySelector("#topic-filters");
 
+filtersForm.addEventListener("submit", (event) => event.preventDefault());
 setupModal();
 const topics = await getTopics();
 
