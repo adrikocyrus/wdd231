@@ -52,11 +52,10 @@ p { margin: 0 0 1rem; }
 .hero-image img { width: 100%; }
 .hero-actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 1.4rem; }
 .button { display: inline-flex; justify-content: center; align-items: center; gap: .4rem; border: 2px solid var(--green); border-radius: 10px; padding: .7rem 1rem; background: var(--green); color: white; text-decoration: none; font-weight: 750; line-height: 1.35; font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
-.button:hover { background: #0f2e28; border-color: #0f2e28; color: white; }
+.button:hover { background: #0f2e28; border-color: #0f2e28; color: white; transform: translateY(-1px); }
 .button-outline { background: transparent; color: var(--green); }
 .button-outline:hover { background: #e3ece5; color: var(--green); }
 .button, .text-link { transition: background-color .18s ease, border-color .18s ease, color .18s ease, transform .18s ease; }
-.button:hover { transform: translateY(-1px); }
 .section { padding: 3.5rem 1.1rem; }
 .section-heading { max-width: 760px; margin-bottom: 1.6rem; }
 .section-heading > p:last-child { color: var(--muted); }
