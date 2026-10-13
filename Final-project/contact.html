@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Submit a vehicle maintenance guidance request and share basic information about your vehicle and service question.">
+  <meta name="author" content="Adriko Cyrus">
+  <meta name="theme-color" content="#173b35">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Service Request | Vehicle Care UG">
+  <meta property="og:description" content="Send a vehicle maintenance guidance request.">
+  <meta property="og:image" content="images/garage.svg">
+  <title>Service Request | Uganda Vehicle Maintenance Guide</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles/small.css">
+  <link rel="stylesheet" href="styles/larger.css">
+  <script type="module" src="scripts/contact.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="Uganda Vehicle Maintenance Guide home"><img src="favicon.svg" width="44" height="44" alt=""><span><strong>Vehicle Care UG</strong><small>Uganda Vehicle Maintenance Guide</small></span></a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Open navigation">☰</button>
+    <nav class="primary-nav" id="primary-nav" aria-label="Main navigation">
+      <a href="index.html">Home</a><a href="maintenance.html">Maintenance guide</a><a class="active" aria-current="page" href="contact.html">Service request</a>
+    </nav>
+  </header>
+  <main id="main" class="page-main">
+    <section class="page-heading">
+      <p class="eyebrow">GET STARTED</p>
+      <h1>Request maintenance guidance</h1>
+      <p>Share your vehicle details and the question you have. This demonstration form displays your submitted information on the next page; it does not send data to a workshop or store it on a server.</p>
+    </section>
+    <section class="form-layout">
+      <form class="request-form" action="form-action.html" method="get">
+        <div class="form-section"><h2>Your details</h2>
+          <label for="full-name">Full name <span aria-hidden="true">*</span><input id="full-name" name="name" autocomplete="name" required minlength="2" maxlength="70"></label>
+          <label for="email">Email address <span aria-hidden="true">*</span><input id="email" name="email" type="email" autocomplete="email" required></label>
+          <label for="phone">Phone number (optional)<input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="+256…"></label>
+        </div>
+        <div class="form-section"><h2>Vehicle information</h2>
+          <label for="vehicle-type">Vehicle type <span aria-hidden="true">*</span><select id="vehicle-type" name="vehicle" required><option value="">Choose a vehicle type</option><option>Saloon / sedan</option><option>SUV / 4x4</option><option>Pickup</option><option>Van / minibus</option><option>Motorcycle</option><option>Other</option></select></label>
+          <label for="vehicle-year">Model year (optional)<input id="vehicle-year" name="year" type="number" min="1950" max="2027" inputmode="numeric" placeholder="e.g. 2018"></label>
+          <label for="topic">Main topic <span aria-hidden="true">*</span><select id="topic" name="topic" required><option value="">Choose a topic</option><option>Routine servicing</option><option>Engine or oil</option><option>Tyres and wheels</option><option>Brakes</option><option>Battery and electrical</option><option>Cooling system</option><option>Warning light or unusual sound</option><option>Other</option></select></label>
+          <label for="question">Describe your question <span aria-hidden="true">*</span><textarea id="question" name="question" rows="5" required minlength="10" maxlength="1000" placeholder="Describe what you would like to understand…"></textarea></label>
+        </div>
+        <label class="checkbox-label"><input type="checkbox" name="updates" value="yes" id="updates"> Remember my preference to receive maintenance tips on this device.</label>
+        <button class="button" type="submit">Submit request</button>
+        <p class="form-note">Do not include passwords, payment details, or other sensitive information.</p>
+      </form>
+      <aside class="form-aside"><span class="feature-icon" aria-hidden="true">ⓘ</span><h2>Before you submit</h2><p>Give as much practical detail as you can. If the vehicle has severe brake problems, overheating, smoke, or another immediate safety concern, stop driving when safe and contact a qualified mechanic.</p><p>Maintenance intervals vary by model, engine, age, road conditions, and usage. Confirm service requirements in the owner's manual.</p></aside>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <div><strong>Vehicle Care UG</strong><p>Practical vehicle care information for drivers.</p></div>
+    <div class="footer-links"><a href="attributions.html">Attributions</a><a href="maintenance.html">Maintenance guide</a><a href="VIDEO-LINK-ADD-HERE">Project demonstration video</a></div>
+    <p class="copyright">© <span data-current-year></span> Uganda Vehicle Maintenance Guide. Educational use only.</p>
+  </footer>
+</body>
+</html>

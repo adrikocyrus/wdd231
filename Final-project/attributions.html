@@ -1,54 +1,40 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Attributions | Automobile Mechanic Learning Hub</title>
-<meta name="description" content="Review the sources, image credits, and acknowledgements for the Automobile Mechanic Learning Hub.">
-<meta name="author" content="Adriko Cyrus">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Sources and Credits | Automobile Mechanic Learning Hub">
-<meta property="og:description" content="Review the sources, image credits, and acknowledgements for the Automobile Mechanic Learning Hub.">
-<meta property="og:image" content="https://adrikocyrus.github.io/wdd231/Final-project/images/engine.webp">
-<meta property="og:url" content="https://adrikocyrus.github.io/wdd231/Final-project/attributions.html">
-<link rel="icon" href="images/favicon.svg" type="image/svg+xml">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles/styles.css">
-<link rel="stylesheet" href="styles/larger.css">
-<script type="module" src="scripts/nav.js"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Sources and attributions for the Uganda Vehicle Maintenance Guide website.">
+  <meta name="author" content="Adriko Cyrus">
+  <title>Attributions | Vehicle Care UG</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles/small.css">
+  <link rel="stylesheet" href="styles/larger.css">
+  <script type="module" src="scripts/main.js"></script>
 </head>
 <body>
-<a class="skip-link" href="#content">Skip to main content</a>
-<header class="site-header">
-  <div class="container header-inner">
-    <a class="brand" href="index.html"><img src="images/favicon.svg" alt="Automobile Mechanic Learning Hub logo" width="40" height="40"><span>Automobile Mechanic Learning Hub</span></a>
-    <button type="button" class="menu-toggle" aria-expanded="false" aria-controls="main-menu"><span aria-hidden="true">&#9776;</span> Menu</button>
-    <nav aria-label="Main navigation">
-      <ul id="main-menu">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="topics.html">Topics</a></li>
-        <li><a href="favorites.html">Favorites</a></li>
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <header class="site-header">
+    <a class="brand" href="index.html"><img src="favicon.svg" width="44" height="44" alt=""><span><strong>Vehicle Care UG</strong><small>Uganda Vehicle Maintenance Guide</small></span></a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Open navigation">☰</button>
+    <nav class="primary-nav" id="primary-nav" aria-label="Main navigation"><a href="index.html">Home</a><a href="maintenance.html">Maintenance guide</a><a href="contact.html">Service request</a></nav>
+  </header>
+  <main id="main" class="page-main">
+    <section class="page-heading"><p class="eyebrow">CREDITS</p><h1>Attributions and sources</h1><p>This page identifies the original assets and information sources used for the project.</p></section>
+    <section class="content-panel">
+      <h2>Images and branding</h2>
+      <p>The vehicle workshop illustration and favicon were created as original SVG artwork for this student project. No external photographic assets are used in the supplied version.</p>
+      <h2>Maintenance information</h2>
+      <p>The maintenance descriptions are original educational summaries written for this project. Recommendations are general examples and must be checked against the relevant vehicle manufacturer's owner's manual.</p>
+      <ul>
+        <li><a href="https://www.nhtsa.gov/vehicle-safety">National Highway Traffic Safety Administration — Vehicle Safety</a></li>
+        <li><a href="https://www.michelinman.com/auto/auto-tips-and-advice">Michelin — Auto Tips and Advice</a></li>
       </ul>
-    </nav>
-  </div>
-</header>
-
-<main id="content" class="container">
-  <h1>Attributions</h1>
-  <ul>
-    <li>Fonts: Poppins and Roboto from Google Fonts (SIL Open Font License).</li>
-    <li>Topic descriptions: written by the site author as general educational summaries.</li>
-    <li>Icons and favicon: original SVG graphics created by the site author.</li>
-  </ul>
-</main>
-
-<footer class="site-footer">
-  <div class="container">
-    <p>&copy; <span id="year">2026</span> Automobile Mechanic Learning Hub | Adriko Cyrus | WDD231</p>
-    <p><a href="index.html">Home</a> | <a href="https://www.loom.com/share/5e0d535523e1432399b820413a1b2c9b" rel="noopener">Project video</a></p>
-  </div>
-</footer>
+      <p>These links are provided as further reading. The website does not claim to represent or be endorsed by the organizations above.</p>
+      <h2>Development</h2>
+      <p>Built with semantic HTML, custom CSS, and vanilla JavaScript ES modules. No third-party frameworks or libraries are used.</p>
+      <a class="button" href="index.html">Back to home</a>
+    </section>
+  </main>
+  <footer class="site-footer"><div><strong>Vehicle Care UG</strong><p>Practical vehicle care information for drivers.</p></div><div class="footer-links"><a href="index.html">Home</a><a href="VIDEO-LINK-ADD-HERE">Project demonstration video</a></div><p class="copyright">© <span data-current-year></span> Uganda Vehicle Maintenance Guide. Educational use only.</p></footer>
 </body>
 </html>

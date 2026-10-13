@@ -1,102 +1,83 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Home | Automobile Mechanic Learning Hub</title>
-<meta name="description" content="Learn how engines, brakes, electrical systems and more work with simple automobile mechanics topics for beginners.">
-<meta name="author" content="Adriko Cyrus">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Learn How Your Vehicle Works | Mechanic Learning Hub">
-<meta property="og:description" content="Learn how engines, brakes, electrical systems and more work with simple automobile mechanics topics for beginners.">
-<meta property="og:image" content="https://adrikocyrus.github.io/wdd231/Final-project/images/engine.webp">
-<meta property="og:url" content="https://adrikocyrus.github.io/wdd231/Final-project/index.html">
-<link rel="icon" href="images/favicon.svg" type="image/svg+xml">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles/styles.css">
-<link rel="stylesheet" href="styles/larger.css">
-<script type="module" src="scripts/nav.js"></script>
-<script type="module" src="scripts/home.js"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Practical vehicle maintenance guidance for drivers in Uganda, including routine checks, service intervals, and safety tips.">
+  <meta name="author" content="Adriko Cyrus">
+  <meta name="theme-color" content="#173b35">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Uganda Vehicle Maintenance Guide">
+  <meta property="og:description" content="Simple, practical vehicle care guidance for everyday drivers.">
+  <meta property="og:image" content="images/garage.svg">
+  <title>Home | Uganda Vehicle Maintenance Guide</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles/small.css">
+  <link rel="stylesheet" href="styles/larger.css">
+  <script type="module" src="scripts/main.js"></script>
 </head>
 <body>
-<a class="skip-link" href="#content">Skip to main content</a>
-<header class="site-header">
-  <div class="container header-inner">
-    <a class="brand" href="index.html"><img src="images/favicon.svg" alt="Automobile Mechanic Learning Hub logo" width="40" height="40"><span>Automobile Mechanic Learning Hub</span></a>
-    <button type="button" class="menu-toggle" aria-expanded="false" aria-controls="main-menu"><span aria-hidden="true">&#9776;</span> Menu</button>
-    <nav aria-label="Main navigation">
-      <ul id="main-menu">
-        <li><a href="index.html" aria-current="page">Home</a></li>
-        <li><a href="topics.html">Topics</a></li>
-        <li><a href="favorites.html">Favorites</a></li>
-      </ul>
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="Uganda Vehicle Maintenance Guide home">
+      <img src="favicon.svg" width="44" height="44" alt="">
+      <span><strong>Vehicle Care UG</strong><small>Uganda Vehicle Maintenance Guide</small></span>
+    </a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Open navigation">☰</button>
+    <nav class="primary-nav" id="primary-nav" aria-label="Main navigation">
+      <a class="active" aria-current="page" href="index.html">Home</a>
+      <a href="maintenance.html">Maintenance guide</a>
+      <a href="contact.html">Service request</a>
     </nav>
-  </div>
-</header>
-
-<main id="content" class="container">
-  <section class="hero">
-    <h1>Learn how your vehicle really works</h1>
-    <p>Clear, beginner-friendly lessons on engines, brakes, electrical systems, transmissions, suspension and routine maintenance.</p>
-    <a class="btn" href="topics.html">Explore topics</a>
-  </section>
-
-  <section aria-labelledby="featured-heading">
-    <h2 id="featured-heading">Start with the basics</h2>
-    <div id="featured-topics" class="card-grid" aria-live="polite"></div>
-  </section>
-
-  <section aria-labelledby="request-heading" class="panel">
-    <h2 id="request-heading">Request a topic</h2>
-    <p>Tell us what you want to learn next.</p>
-    <form action="thanks.html" method="get">
-      <div class="field">
-        <label for="name">Name</label>
-        <input type="text" id="name" name="name" required autocomplete="name">
+  </header>
+  <main id="main">
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">DRIVE SMART. MAINTAIN REGULARLY.</p>
+        <h1>Take better care of your vehicle.</h1>
+        <p>Clear, practical maintenance guidance to help you understand routine checks, recognize common warning signs, and prepare for your next service.</p>
+        <div class="hero-actions">
+          <a class="button" href="maintenance.html">Explore maintenance guide</a>
+          <a class="button button-outline" href="contact.html">Request guidance</a>
+        </div>
       </div>
-      <div class="field">
-        <label for="email">Email</label>
-        <input type="email" id="email" name="email" required autocomplete="email">
+      <div class="hero-image">
+        <img src="images/garage.webp" width="720" height="480" alt="Illustration of a car in a vehicle service workshop" fetchpriority="high">
       </div>
-      <div class="field">
-        <label for="system">Topic area</label>
-        <select id="system" name="system" required>
-          <option value="" disabled selected>Choose an area</option>
-          <option>Engine Systems</option>
-          <option>Brake Systems</option>
-          <option>Electrical Systems</option>
-          <option>Transmission</option>
-          <option>Suspension</option>
-          <option>Maintenance</option>
-        </select>
-      </div>
-      <fieldset>
-        <legend>Experience level</legend>
-        <label><input type="radio" name="level" value="Beginner" checked> Beginner</label>
-        <label><input type="radio" name="level" value="Intermediate"> Intermediate</label>
-        <label><input type="radio" name="level" value="Advanced"> Advanced</label>
-      </fieldset>
-      <div class="field">
-        <label for="message">What would you like to learn?</label>
-        <textarea id="message" name="message" rows="4" required minlength="10"></textarea>
-      </div>
-      <button type="submit" class="btn">Send request</button>
-    </form>
-  </section>
-</main>
+    </section>
 
-<dialog id="topic-dialog" aria-labelledby="dialog-title">
-  <button type="button" class="dialog-close" aria-label="Close dialog">&times;</button>
-  <div class="dialog-body"><h2 id="dialog-title" class="visually-hidden">Topic details</h2></div>
-</dialog>
+    <section class="section intro-section">
+      <div class="section-heading">
+        <p class="eyebrow">START WITH THE BASICS</p>
+        <h2>Small checks can prevent big problems</h2>
+        <p>Routine maintenance supports safety, reliability, and the useful life of your vehicle. Always follow your vehicle manufacturer's handbook for exact specifications.</p>
+      </div>
+      <div class="feature-grid">
+        <article class="feature-card"><span class="feature-icon" aria-hidden="true">◷</span><h3>Follow service intervals</h3><p>Keep track of time- and distance-based maintenance instead of waiting for a warning light.</p></article>
+        <article class="feature-card"><span class="feature-icon" aria-hidden="true">✓</span><h3>Check before driving</h3><p>Look at tyres, lights, visible leaks, and dashboard warnings before longer journeys.</p></article>
+        <article class="feature-card"><span class="feature-icon" aria-hidden="true">⚙</span><h3>Act on warning signs</h3><p>Unusual noises, smells, vibration, or overheating should be checked promptly.</p></article>
+      </div>
+    </section>
 
-<footer class="site-footer">
-  <div class="container">
-    <p>&copy; <span id="year">2026</span> Automobile Mechanic Learning Hub | Adriko Cyrus | WDD231</p>
-    <p><a href="attributions.html">Attributions</a> | <a href="https://www.loom.com/share/5e0d535523e1432399b820413a1b2c9b" rel="noopener">Project video</a></p>
-  </div>
-</footer>
+    <section class="section highlight-section">
+      <div>
+        <p class="eyebrow">MAINTENANCE LIBRARY</p>
+        <h2>Build a better maintenance habit</h2>
+        <p>Browse a growing set of maintenance topics. Open any item to read more, filter by category, and save useful items to your favourites on this device.</p>
+        <a class="text-link" href="maintenance.html">View all maintenance items →</a>
+      </div>
+      <div class="stat-panel"><strong>15+</strong><span>practical maintenance topics</span><strong>4</strong><span>details shown for each topic</span></div>
+    </section>
+
+    <section class="section safety-note">
+      <h2>Safety comes first</h2>
+      <p>This website provides general educational information, not a substitute for your owner's manual or a qualified mechanic's inspection. Never work under a vehicle supported only by a jack. If a warning indicates an immediate safety risk, stop in a safe place and seek professional help.</p>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <div><strong>Vehicle Care UG</strong><p>Practical vehicle care information for drivers.</p></div>
+    <div class="footer-links"><a href="attributions.html">Attributions</a><a href="contact.html">Contact / service request</a><a href="VIDEO-LINK-ADD-HERE">Project demonstration video</a></div>
+    <p class="copyright">© <span data-current-year></span> Uganda Vehicle Maintenance Guide. Educational use only.</p>
+  </footer>
 </body>
 </html>

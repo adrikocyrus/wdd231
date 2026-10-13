@@ -1,33 +1,43 @@
-const FAV_KEY = "amlh-favorites";
-const FILTER_KEY = "amlh-filters";
+const FAVOURITES_KEY = "vehicleCareFavourites";
+const TIPS_KEY = "vehicleCareTipPreference";
 
-export function getFavorites() {
+export function getFavourites() {
   try {
-    return JSON.parse(localStorage.getItem(FAV_KEY)) || [];
-  } catch {
+    const stored = JSON.parse(localStorage.getItem(FAVOURITES_KEY) || "[]");
+    return Array.isArray(stored) ? stored : [];
+  } catch (error) {
+    console.error("Could not read favourites from local storage:", error);
     return [];
   }
 }
 
-export function isFavorite(id) {
-  return getFavorites().includes(id);
+export function isFavourite(id) {
+  return getFavourites().includes(id);
 }
 
-export function toggleFavorite(id) {
-  const favs = getFavorites();
-  const updated = favs.includes(id) ? favs.filter((f) => f !== id) : [...favs, id];
-  localStorage.setItem(FAV_KEY, JSON.stringify(updated));
-  return updated.includes(id);
-}
+export function toggleFavourite(id) {
+  const favourites = getFavourites();
+  const updated = favourites.includes(id)
+    ? favourites.filter((itemId) => itemId !== id)
+    : [...favourites, id];
 
-export function getFilters() {
   try {
-    return JSON.parse(localStorage.getItem(FILTER_KEY)) || { system: "all", level: "all" };
-  } catch {
-    return { system: "all", level: "all" };
+    localStorage.setItem(FAVOURITES_KEY, JSON.stringify(updated));
+  } catch (error) {
+    console.error("Could not save favourites:", error);
   }
+  return updated;
 }
 
-export function saveFilters(filters) {
-  localStorage.setItem(FILTER_KEY, JSON.stringify(filters));
+export function getTipPreference() {
+  return localStorage.getItem(TIPS_KEY) === "yes";
+}
+
+export function setTipPreference(shouldRemember) {
+  try {
+    if (shouldRemember) localStorage.setItem(TIPS_KEY, "yes");
+    else localStorage.removeItem(TIPS_KEY);
+  } catch (error) {
+    console.error("Could not save preference:", error);
+  }
 }

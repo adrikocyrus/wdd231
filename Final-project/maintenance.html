@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Browse vehicle maintenance topics, service intervals, categories, and practical descriptions in the Uganda Vehicle Maintenance Guide.">
+  <meta name="author" content="Adriko Cyrus">
+  <meta name="theme-color" content="#173b35">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Maintenance Guide | Vehicle Care UG">
+  <meta property="og:description" content="Browse routine vehicle checks and maintenance topics.">
+  <meta property="og:image" content="images/garage.svg">
+  <title>Maintenance Guide | Uganda Vehicle Maintenance Guide</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles/small.css">
+  <link rel="stylesheet" href="styles/larger.css">
+  <script type="module" src="scripts/maintenance.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="Uganda Vehicle Maintenance Guide home"><img src="favicon.svg" width="44" height="44" alt=""><span><strong>Vehicle Care UG</strong><small>Uganda Vehicle Maintenance Guide</small></span></a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Open navigation">☰</button>
+    <nav class="primary-nav" id="primary-nav" aria-label="Main navigation">
+      <a href="index.html">Home</a><a class="active" aria-current="page" href="maintenance.html">Maintenance guide</a><a href="contact.html">Service request</a>
+    </nav>
+  </header>
+  <main id="main" class="page-main">
+    <section class="page-heading">
+      <p class="eyebrow">THE MAINTENANCE LIBRARY</p>
+      <h1>Know what your vehicle needs</h1>
+      <p>Explore routine checks and common service tasks. The intervals below are general examples; your owner's manual and actual driving conditions take priority.</p>
+    </section>
+    <section class="library-tools" aria-label="Maintenance library controls">
+      <label for="search-items">Search maintenance items<input id="search-items" type="search" placeholder="e.g. tyres, oil, brakes"></label>
+      <label for="category-filter">Filter by category<select id="category-filter"><option value="all">All categories</option></select></label>
+      <label for="saved-filter">Show saved items<select id="saved-filter"><option value="all">All items</option><option value="saved">My favourites only</option></select></label>
+    </section>
+    <p id="results-status" class="results-status" role="status" aria-live="polite">Loading maintenance information…</p>
+    <div id="maintenance-grid" class="maintenance-grid" aria-busy="true"></div>
+    <div id="load-error" class="error-message" hidden>
+      <h2>We could not load the maintenance guide</h2>
+      <p>Make sure you are running the site through a local web server, such as VS Code Live Server, and try again.</p>
+      <button class="button" id="retry-load" type="button">Try again</button>
+    </div>
+    <dialog id="details-dialog" class="details-dialog" aria-labelledby="dialog-title">
+      <div class="dialog-header"><h2 id="dialog-title">Maintenance details</h2><button type="button" class="icon-button" id="close-dialog" aria-label="Close details">×</button></div>
+      <div id="dialog-content"></div>
+      <div class="dialog-actions"><button type="button" class="button button-outline" id="dialog-favourite">Save to favourites</button><button type="button" class="button" id="dialog-done">Done</button></div>
+    </dialog>
+  </main>
+  <footer class="site-footer">
+    <div><strong>Vehicle Care UG</strong><p>Practical vehicle care information for drivers.</p></div>
+    <div class="footer-links"><a href="attributions.html">Attributions</a><a href="contact.html">Contact / service request</a><a href="VIDEO-LINK-ADD-HERE">Project demonstration video</a></div>
+    <p class="copyright">© <span data-current-year></span> Uganda Vehicle Maintenance Guide. Educational use only.</p>
+  </footer>
+</body>
+</html>

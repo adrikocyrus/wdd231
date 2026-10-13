@@ -1,0 +1,182 @@
+[
+  {
+    "id": "engine-oil",
+    "name": "Engine oil and filter",
+    "category": "Engine",
+    "interval": "Check monthly; change as specified in the owner's manual",
+    "description": "Check the oil level on level ground using the procedure in your owner's manual. Use the correct oil grade and replace the filter at the specified service interval.",
+    "benefit": "Supports lubrication and helps reduce engine wear.",
+    "difficulty": "Basic level check; service change varies by vehicle",
+    "warning": "Seek help if oil pressure warning lights stay on, the level drops repeatedly, or a major leak appears."
+  },
+  {
+    "id": "tyre-pressure",
+    "name": "Tyre pressure",
+    "category": "Tyres and wheels",
+    "interval": "Check monthly and before long journeys, when tyres are cold",
+    "description": "Use a reliable pressure gauge and compare readings with the vehicle placard or owner's manual. Do not use the maximum pressure printed on the tyre sidewall as the normal target.",
+    "benefit": "Correct pressure supports handling, tyre life, and fuel efficiency.",
+    "difficulty": "Easy with a gauge",
+    "warning": "Have repeated pressure loss, bulges, or visible damage inspected promptly."
+  },
+  {
+    "id": "tyre-tread",
+    "name": "Tyre tread and condition",
+    "category": "Tyres and wheels",
+    "interval": "Inspect monthly",
+    "description": "Look for uneven wear, cracks, cuts, embedded objects, and tread wear indicators. Check all tyres, including the spare if fitted.",
+    "benefit": "Good tyre condition improves grip and helps reduce the risk of a tyre failure.",
+    "difficulty": "Basic visual inspection",
+    "warning": "Do not drive on a tyre with a bulge, exposed cords, or serious damage."
+  },
+  {
+    "id": "brakes",
+    "name": "Brake system",
+    "category": "Brakes",
+    "interval": "Pay attention during every drive; inspect during scheduled servicing",
+    "description": "Notice changes in pedal feel, pulling to one side, vibration, grinding, or squealing. Brake components should be inspected by a qualified technician.",
+    "benefit": "Maintains stopping performance and road safety.",
+    "difficulty": "Professional inspection recommended",
+    "warning": "If braking is reduced, a warning light appears, or grinding is severe, stop safely and arrange professional help."
+  },
+  {
+    "id": "coolant",
+    "name": "Coolant level and condition",
+    "category": "Cooling system",
+    "interval": "Check according to the owner's manual, only when the engine is cold",
+    "description": "Check the coolant reservoir level when the engine is cold. Use only the specified coolant mixture and never open a hot cooling system.",
+    "benefit": "Helps control engine temperature and protect against corrosion.",
+    "difficulty": "Basic visual check when cold",
+    "warning": "Never remove a radiator cap while hot. Repeated overheating or coolant loss needs professional attention."
+  },
+  {
+    "id": "battery",
+    "name": "Battery and terminals",
+    "category": "Electrical",
+    "interval": "Inspect every few months and before long trips",
+    "description": "Look for secure mounting, corrosion around terminals, and signs of damage. Avoid shorting the terminals and follow the manufacturer's safety instructions.",
+    "benefit": "Supports reliable starting and stable electrical operation.",
+    "difficulty": "Visual check; testing is best done with suitable equipment",
+    "warning": "A swollen, leaking, or unusually hot battery should be handled by a professional."
+  },
+  {
+    "id": "lights",
+    "name": "Exterior lights and indicators",
+    "category": "Electrical",
+    "interval": "Check weekly and before night journeys",
+    "description": "Test headlights, tail lights, brake lights, hazard lights, and indicators. Clean lenses and replace failed bulbs with the correct type.",
+    "benefit": "Helps you see and helps other road users understand your actions.",
+    "difficulty": "Easy with assistance for brake lights",
+    "warning": "Repair failed brake lights or headlights promptly; avoid night driving when visibility is unsafe."
+  },
+  {
+    "id": "wipers",
+    "name": "Wiper blades and washer fluid",
+    "category": "Visibility",
+    "interval": "Inspect monthly and before rainy periods",
+    "description": "Check for cracked rubber, streaking, chatter, or missed areas. Refill the washer reservoir with suitable fluid and keep the windscreen clean.",
+    "benefit": "Maintains visibility in rain, dust, and road spray.",
+    "difficulty": "Easy",
+    "warning": "Replace blades if visibility remains poor after cleaning."
+  },
+  {
+    "id": "air-filter",
+    "name": "Engine air filter",
+    "category": "Engine",
+    "interval": "Inspect at scheduled service; replace as specified for the vehicle and conditions",
+    "description": "A clean air filter allows the engine to receive the air it needs. Dusty roads may require more frequent inspection, but follow the manual's guidance.",
+    "benefit": "Supports normal engine operation and helps keep dust out of the intake system.",
+    "difficulty": "Varies by vehicle; consult the manual",
+    "warning": "Have the intake inspected if the filter housing is damaged or the engine runs poorly."
+  },
+  {
+    "id": "cabin-filter",
+    "name": "Cabin air filter",
+    "category": "Comfort",
+    "interval": "Replace at the interval in the owner's manual; inspect sooner in dusty conditions",
+    "description": "The cabin filter helps reduce dust and particles entering through the ventilation system. Location and replacement procedure vary by model.",
+    "benefit": "Supports cabin airflow and passenger comfort.",
+    "difficulty": "Often straightforward, but model dependent",
+    "warning": "If ventilation remains weak or smells persist after replacement, seek further inspection."
+  },
+  {
+    "id": "belts-hoses",
+    "name": "Belts and hoses",
+    "category": "Engine",
+    "interval": "Inspect during routine service",
+    "description": "Look for visible cracks, fraying, swelling, leaks, or loose connections where safe to do so. Some components are difficult to see and need workshop inspection.",
+    "benefit": "Helps identify wear that could lead to breakdowns.",
+    "difficulty": "Visual check; replacement is a technician's task",
+    "warning": "A damaged drive belt, leaking hose, or rapidly rising engine temperature needs prompt attention."
+  },
+  {
+    "id": "transmission",
+    "name": "Transmission fluid",
+    "category": "Fluids",
+    "interval": "Check or replace only according to the vehicle-specific procedure",
+    "description": "Transmission designs differ. Some have dipsticks while others require special tools and temperature-specific procedures. Use only the specified fluid.",
+    "benefit": "Supports correct transmission operation and component protection.",
+    "difficulty": "Professional check often recommended",
+    "warning": "Slipping, harsh shifts, burning smells, or fluid leaks should be checked by a qualified technician."
+  },
+  {
+    "id": "power-steering",
+    "name": "Steering system",
+    "category": "Steering and suspension",
+    "interval": "Notice changes while driving; inspect during scheduled servicing",
+    "description": "Pay attention to unusual steering effort, vibration, clunks, or a vehicle that wanders. Some vehicles use electric steering and have no fluid reservoir.",
+    "benefit": "Supports predictable steering and control.",
+    "difficulty": "Driver observation; workshop inspection",
+    "warning": "Sudden loss of steering assistance or serious looseness requires stopping safely and seeking help."
+  },
+  {
+    "id": "suspension",
+    "name": "Suspension and shock absorbers",
+    "category": "Steering and suspension",
+    "interval": "Inspect during routine service and after severe impacts",
+    "description": "Notice excessive bouncing, uneven tyre wear, knocking noises, or fluid leaking from shock absorbers. Suspension checks may require lifting equipment.",
+    "benefit": "Supports stable handling, comfort, and tyre contact with the road.",
+    "difficulty": "Professional inspection recommended",
+    "warning": "Severe instability, broken parts, or a wheel that appears misaligned needs urgent inspection."
+  },
+  {
+    "id": "spark-plugs",
+    "name": "Spark plugs (petrol engines)",
+    "category": "Engine",
+    "interval": "Replace according to engine and plug specifications",
+    "description": "Spark plugs and replacement intervals vary by engine design and plug type. Misfires, difficult starting, or poor running can have several causes and need diagnosis.",
+    "benefit": "Helps maintain efficient combustion and smooth engine operation.",
+    "difficulty": "Vehicle dependent; correct tools and torque are important",
+    "warning": "A flashing engine warning light or severe misfire should be checked promptly."
+  },
+  {
+    "id": "fuel-system",
+    "name": "Fuel leaks and fuel cap",
+    "category": "Fuel system",
+    "interval": "Look for warning signs during routine checks",
+    "description": "Notice fuel smells, visible wet patches, or a loose or damaged fuel cap. Never smoke or create sparks around suspected fuel leaks.",
+    "benefit": "Supports safe operation and can help prevent fuel-system faults.",
+    "difficulty": "Visual awareness; repairs require a professional",
+    "warning": "If you suspect a fuel leak, stop the engine when safe, keep away from ignition sources, and seek assistance."
+  },
+  {
+    "id": "emergency-kit",
+    "name": "Emergency kit and spare tyre",
+    "category": "Preparedness",
+    "interval": "Check monthly and before long trips",
+    "description": "Confirm the spare tyre, jack, wheel tool, warning triangle, torch, first-aid supplies, and other locally appropriate items are present and usable.",
+    "benefit": "Helps you respond more safely to a breakdown or roadside problem.",
+    "difficulty": "Easy inventory check",
+    "warning": "Never change a wheel beside moving traffic or work under a vehicle supported only by a jack."
+  },
+  {
+    "id": "windshield",
+    "name": "Windscreen and mirrors",
+    "category": "Visibility",
+    "interval": "Check before each journey",
+    "description": "Keep glass and mirrors clean and check for cracks, loose mirrors, or obstructions to the driver's view. Adjust mirrors before moving.",
+    "benefit": "Improves awareness of traffic and hazards around the vehicle.",
+    "difficulty": "Easy",
+    "warning": "Damage that obstructs the driver's view or affects structural integrity needs prompt professional assessment."
+  }
+]
