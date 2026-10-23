@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#17211e">
+  <title>Benchflow — Repair operations demo</title>
+  <style>
+    :root{--ink:#18201e;--soft:#66716c;--muted:#929b96;--line:#e8ece8;--canvas:#f5f7f4;--green:#347860;--green-dark:#255f49;--sidebar:#17211e;--mono:"DM Mono","Cascadia Code",Consolas,monospace;--sans:"DM Sans","Segoe UI",Arial,sans-serif;--display:"Manrope","Segoe UI",Arial,sans-serif}
+    *{box-sizing:border-box}body{margin:0;color:var(--ink);background:var(--canvas);font:14px var(--sans);-webkit-font-smoothing:antialiased}button,input,select,textarea{font:inherit}button{color:inherit}button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid #89c5a6;outline-offset:2px}button:disabled{opacity:.65;cursor:wait}
+    .shell{min-height:100vh}.sidebar{position:fixed;inset:0 auto 0 0;z-index:5;display:flex;width:250px;flex-direction:column;padding:24px 15px 12px;color:#f6f8f5;background:var(--sidebar)}.brand{display:flex;align-items:center;gap:10px;padding:0 9px;font:800 18px var(--display);letter-spacing:-.8px}.brand-mark{display:grid;width:32px;height:32px;flex:0 0 32px;place-items:center;color:#17211e;border-radius:10px;background:#b7e8cb;font-size:17px}.brand small{display:block;margin-top:4px;color:#7e9187;font:500 8px var(--mono);letter-spacing:1.1px}
+    .shop{display:flex;align-items:center;gap:10px;margin:29px 0 26px;padding:11px 10px;border:1px solid #35423c;border-radius:10px;background:#202b26}.shop-icon{display:grid;width:31px;height:31px;place-items:center;border-radius:8px;background:#34483d;color:#bee7cf}.shop strong,.shop small{display:block}.shop strong{font-size:11px}.shop small{margin-top:4px;color:#839188;font:9px var(--mono);letter-spacing:.7px}.nav-label,.eyebrow{color:#818b85;font:500 9px var(--mono);letter-spacing:1.2px}.nav-label{padding:0 11px;margin-bottom:10px}.nav{display:grid;gap:4px}.nav button{display:flex;align-items:center;gap:12px;width:100%;padding:11px 12px;color:#9ca9a1;border:0;border-radius:8px;background:transparent;text-align:left;cursor:pointer}.nav button:hover{color:#eff8f2;background:#26352d}.nav button.active{color:#dcf3e5;background:#2a4437}.nav button.active:before{position:absolute;left:0;width:3px;height:21px;border-radius:0 4px 4px 0;background:#9cdbb4;content:""}.nav .nav-icon{width:19px;color:inherit;text-align:center}.nav .nav-name{flex:1;font-size:12px;font-weight:500}.nav-count{display:grid;min-width:21px;height:21px;place-items:center;padding:0 5px;color:#c1e7cf;border-radius:7px;background:#385541;font:10px var(--mono)}
+    .sidebar-card{margin:auto 5px 18px;padding:15px;border:1px solid #34453a;border-radius:12px;background:linear-gradient(145deg,#222f28,#1b2822)}.sidebar-card .spark{color:#b7e8cb}.sidebar-card strong{display:block;margin-top:10px;font:600 14px/1.45 var(--display)}.sidebar-card p{margin:7px 0 11px;color:#a1ada5;font-size:10px;line-height:1.6}.sidebar-card button{padding:0;color:#b8e2c9;border:0;background:none;cursor:pointer;font-size:10px;font-weight:600}
+    .profile{display:flex;align-items:center;gap:9px;margin-top:auto;padding:12px 6px 2px;border-top:1px solid #35413b}.avatar{display:grid;width:32px;height:32px;flex:0 0 32px;place-items:center;color:#203229;border-radius:50%;background:#b7e8cb;font-size:10px;font-weight:700}.profile-copy{display:grid;flex:1;gap:3px;min-width:0}.profile-copy strong{overflow:hidden;color:#f1f6f2;font-size:11px;text-overflow:ellipsis;white-space:nowrap}.profile-copy small{color:#96a59b;font-size:10px}.plain-icon{display:grid;width:33px;height:33px;place-items:center;color:#8b9a90;border:0;border-radius:8px;background:transparent;cursor:pointer}.plain-icon:hover{color:#e7f5eb;background:#314239}
+    .main{min-height:100vh;margin-left:250px}.topbar{position:sticky;top:0;z-index:4;display:flex;height:62px;align-items:center;justify-content:space-between;padding:0 42px;border-bottom:1px solid #e9ede9;background:#ffffffed;backdrop-filter:blur(12px)}.crumbs,.top-actions{display:flex;align-items:center;gap:12px}.crumbs{color:#8b948e;font-size:11px}.crumbs b{color:#303a34;font-weight:600}.slash{color:#d1d7d2}.top-actions{gap:14px}.date{color:#808a84;font-size:10px}.top-avatar{display:grid;width:29px;height:29px;place-items:center;color:#3b6850;border-radius:50%;background:#e5f0e7;font-size:9px;font-weight:700}.demo-banner{display:flex;align-items:center;justify-content:center;gap:8px;min-height:29px;color:#775e34;border-bottom:1px solid #eee0bd;background:#fff9e9;font-size:9px;letter-spacing:.1px}.demo-banner b{font:500 9px var(--mono);letter-spacing:.7px}.demo-banner button{padding:0;color:#866b3f;border:0;background:none;cursor:pointer;text-decoration:underline}
+    .content{width:min(1210px,100%);min-height:calc(100vh - 91px);margin:auto;padding:35px 42px 18px}.welcome,.page-heading{display:flex;align-items:flex-end;justify-content:space-between;gap:20px}.eyebrow{display:inline-flex;align-items:center;gap:7px}.dot{width:6px;height:6px;border-radius:50%;background:#59a677;box-shadow:0 0 0 3px #e2f1e7}.welcome h1,.page-heading h1{margin:11px 0 6px;font:700 27px var(--display);letter-spacing:-1.2px}.welcome p,.page-heading p{margin:0;color:#858e88;font-size:12px}
+    .btn{display:inline-flex;min-height:38px;align-items:center;justify-content:center;gap:8px;padding:0 14px;border:1px solid transparent;border-radius:8px;cursor:pointer;font-size:11px;font-weight:600;transition:background .18s,transform .18s}.btn:hover:not(:disabled){transform:translateY(-1px)}.primary{color:#f6fbf7;background:var(--green);box-shadow:0 2px 4px #34786021}.primary:hover:not(:disabled){background:var(--green-dark)}.secondary{color:#416f57;border-color:#dfe8e1;background:#fff}.secondary:hover:not(:disabled){border-color:#bcd4c3;background:#f5faf6}.quiet{color:#77817b;background:transparent}.small{min-height:30px;padding:0 10px;font-size:10px}
+    .metrics{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:26px}.metric{position:relative;display:grid;min-height:140px;grid-template-columns:1fr auto;justify-items:start;padding:15px 16px;border:1px solid #e8ece8;border-radius:11px;background:#fff;cursor:pointer;text-align:left;transition:transform .18s,box-shadow .18s}.metric:hover{transform:translateY(-2px);box-shadow:0 9px 24px #1f38230a}.metric-icon{display:grid;width:32px;height:32px;grid-column:2;grid-row:1/span 2;place-items:center;border-radius:9px}.lavender{color:#77659a;background:#f0ebf8}.blue{color:#517a9a;background:#eaf2f8}.green{color:#4b8a62;background:#e8f3e9}.orange{color:#bd8054;background:#fbf0e6}.metric-label{grid-column:1;grid-row:1;align-self:center;color:#707b74;font-size:10px}.metric strong{grid-column:1/-1;margin-top:10px;font:600 29px var(--display);letter-spacing:-1.5px}.metric small{grid-column:1/-1;margin-top:2px;color:#959e98;font-size:9px}.metric-arrow{position:absolute;right:15px;bottom:15px;color:#a2aaa4}
+    .overview-grid{display:grid;grid-template-columns:1.55fr 1fr;gap:14px;margin-top:17px}.surface{border:1px solid #e8ece8;border-radius:11px;background:white}.overview-card{display:flex;min-height:339px;flex-direction:column;padding:18px 18px 0}.section-head{display:flex;align-items:center;justify-content:space-between;gap:12px}.section-head h2{margin:7px 0 0;font:700 15px var(--display);letter-spacing:-.3px}.text-btn{display:inline-flex;align-items:center;gap:6px;padding:5px 0;color:#57826a;border:0;background:transparent;cursor:pointer;font-size:10px;font-weight:600}.recent-list{margin:15px -18px 10px}.recent{display:flex;width:100%;min-height:56px;align-items:center;gap:10px;padding:8px 16px;border:0;border-top:1px solid #f0f2f0;background:#fff;cursor:pointer;text-align:left}.recent:hover{background:#fafcf9}.device{display:grid;width:32px;height:32px;flex:0 0 32px;place-items:center;color:#648371;border-radius:9px;background:#eef4ef}.recent-main{display:grid;flex:1;gap:4px;overflow:hidden}.recent-main strong{overflow:hidden;font-size:10px;text-overflow:ellipsis;white-space:nowrap}.recent-main small{overflow:hidden;color:#8d9690;font-size:9px;text-overflow:ellipsis;white-space:nowrap}.pill{display:inline-flex;min-height:22px;align-items:center;justify-content:center;padding:0 8px;border-radius:20px;font-size:9px;font-weight:600;white-space:nowrap}.status-open{color:#876c9c;background:#f2edf7}.status-in_progress{color:#567994;background:#edf3f8}.status-waiting_for_parts{color:#a47946;background:#f9f2e7}.status-ready_for_pickup{color:#448158;background:#eaf4eb}.status-picked_up{color:#65756b;background:#eef2ef}.status-cancelled{color:#ad6963;background:#faeeee}.surface-footer{display:flex;width:calc(100% + 36px);min-height:40px;align-items:center;justify-content:center;gap:7px;margin:auto -18px 0;color:#66816e;border:0;border-top:1px solid #edf0ed;border-radius:0 0 11px 11px;background:#fff;cursor:pointer;font-size:10px;font-weight:600}.surface-footer:hover{background:#fafcf9}
+    .stock-list{margin:15px 0}.stock-row{display:flex;min-height:55px;align-items:center;gap:9px;border-bottom:1px solid #f0f2f0}.stock-dot{width:7px;height:7px;flex:0 0 7px;border-radius:50%;background:#dda36d}.stock-name{display:grid;flex:1;gap:4px;min-width:0}.stock-name strong{overflow:hidden;font-size:10px;text-overflow:ellipsis;white-space:nowrap}.stock-name small{color:#959d97;font:9px var(--mono)}.stock-count{color:#976d48;font:600 14px var(--mono)}.stock-count small{display:block;margin-top:2px;color:#a8afa9;font:9px var(--sans);text-align:right}.note{display:flex;min-height:62px;align-items:center;gap:12px;margin-top:14px;padding:11px 15px;border:1px solid #e4ebe5;border-radius:10px;background:#edf4ed}.note-icon{display:grid;width:32px;height:32px;flex:0 0 32px;place-items:center;color:#537c60;border-radius:9px;background:#dcebdd}.note-copy{display:grid;flex:1;gap:4px}.note-copy strong{font:600 11px var(--display)}.note-copy small{color:#77857b;font-size:9px}.note button{display:inline-flex;align-items:center;gap:6px;color:#527b5e;border:0;background:none;cursor:pointer;font-size:10px;font-weight:600}
+    .footer{display:flex;align-items:center;justify-content:space-between;margin-top:24px;color:#a0a8a2;font:8px var(--mono);letter-spacing:.6px}.footer span:last-child{color:#6e9275}
+    .page-heading{align-items:center}.page-heading h1{margin-top:9px}.toolbar{display:flex;min-height:55px;align-items:center;justify-content:space-between;gap:14px;margin-top:19px;padding:7px 0}.search{display:flex;width:min(310px,100%);height:36px;align-items:center;gap:8px;padding:0 10px;color:#98a19b;border:1px solid #e4e9e4;border-radius:8px;background:white}.search input{width:100%;padding:0;color:#36423a;border:0;outline:0;background:transparent;font-size:10px}.search input::placeholder{color:#a7aea9}.filters{display:flex;gap:3px;overflow-x:auto;padding:3px;border:1px solid #e9ede9;border-radius:8px;background:#fff}.filters button{flex:0 0 auto;padding:7px 9px;color:#8b948e;border:0;border-radius:6px;background:transparent;cursor:pointer;font-size:9px}.filters button.chosen{color:#3d6d50;background:#edf4ee;font-weight:600}.table{overflow:hidden}.table-head,.table-row{display:grid;grid-template-columns:minmax(160px,1.6fr) minmax(120px,1fr) minmax(95px,.8fr) minmax(100px,.8fr) minmax(110px,.9fr) 110px;align-items:center;gap:10px;padding:0 15px}.table-head{min-height:40px;color:#99a19b;border-bottom:1px solid #edf0ed;background:#fafbf9;font:9px var(--mono);letter-spacing:.5px}.table-row{min-height:63px;border-bottom:1px solid #f0f2f0}.table-row:last-child{border-bottom:0}.part-name{display:flex;align-items:center;gap:9px;min-width:0}.part-icon{display:grid;width:29px;height:29px;flex:0 0 29px;place-items:center;color:#6d8977;border-radius:8px;background:#eff5f0}.part-name strong,.customer-cell strong{overflow:hidden;font-size:10px;text-overflow:ellipsis;white-space:nowrap}.sku{color:#859088;font:9px var(--mono)}.quantity{font:500 11px var(--mono)}.price{font-size:10px;font-weight:600}.stock-status{display:inline-flex;align-items:center;gap:6px;color:#53805f;font-size:9px}.stock-status i,.active-dot{width:6px;height:6px;border-radius:50%;background:#6da57a}.low{color:#a5794b}.low i{background:#dca36e}.out{color:#b56b61}.out i{background:#cc796e}
+    .ticket-list{display:grid;gap:10px}.ticket{padding:13px 15px 0;border:1px solid #e8ece8;border-radius:10px;background:#fff}.ticket-top{display:flex;align-items:center;justify-content:space-between;gap:10px}.ref{color:#8c9690;font:9px var(--mono)}.ticket-core{display:flex;align-items:center;gap:11px;padding:13px 0 12px}.ticket-device{display:grid;width:40px;height:40px;flex:0 0 40px;place-items:center;color:#5e7e6c;border-radius:9px;background:#eef4ef;font-size:18px}.ticket-copy{flex:1;min-width:0}.ticket-copy h3{margin:0;font:650 12px var(--display)}.ticket-copy p{overflow:hidden;margin:5px 0 0;color:#8b948e;font-size:10px;text-overflow:ellipsis;white-space:nowrap}.customer-cell{display:grid;min-width:140px;gap:5px}.customer-cell small{color:#8f9992;font-size:9px}.ticket-bottom{display:flex;min-height:42px;align-items:center;justify-content:space-between;gap:10px;border-top:1px solid #f0f2f0}.assigned{color:#89938c;font-size:9px}.ticket-actions{display:flex;align-items:center;gap:8px}.empty{display:grid;justify-items:center;padding:42px 20px;color:#869189;text-align:center}.empty strong{margin-top:10px;color:#36423a;font:600 12px var(--display)}.empty p{margin:5px 0 0;font-size:10px}
+    .customer-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.customer-card{display:flex;min-height:88px;align-items:center;gap:11px;padding:13px;border:1px solid #e8ece8;border-radius:10px;background:#fff}.customer-avatar{display:grid;width:39px;height:39px;flex:0 0 39px;place-items:center;color:#60816a;border-radius:12px;background:#ecf3ed;font-size:11px;font-weight:700}.customer-info{display:grid;flex:1;gap:4px;min-width:0}.customer-info strong{overflow:hidden;font:650 11px var(--display);text-overflow:ellipsis;white-space:nowrap}.customer-info small{color:#7f8982;font-size:9px}.customer-info em{color:#a1a9a3;font-size:9px;font-style:normal}
+    .invoice-row{display:grid;grid-template-columns:1fr 1.4fr 1fr 1fr 1fr 110px;align-items:center;gap:10px;min-height:59px;padding:0 15px;border-bottom:1px solid #f0f2f0}.invoice-id{color:#54775e;font:10px var(--mono)}.invoice-customer{display:grid;gap:4px;font-size:10px;font-weight:600}.invoice-customer small{color:#9aa29c;font:8px var(--mono)}.invoice-total{font:650 11px var(--display);text-align:right}.invoice-status{display:inline-flex;padding:5px 8px;color:#537f5f;border-radius:20px;background:#eaf4eb;font-size:9px;text-transform:capitalize}
+    .team-row{display:flex;min-height:64px;align-items:center;gap:12px;padding:10px 15px;border-bottom:1px solid #eff2ef}.team-row:last-child{border:0}.team-ident{display:grid;flex:1;gap:4px}.team-ident strong{font-size:10px}.team-ident small{color:#959e98;font-size:9px}.role{padding:5px 8px;color:#587b61;border-radius:20px;background:#eff5ef;font-size:9px}
+    .modal-backdrop{position:fixed;inset:0;z-index:10;display:grid;overflow:auto;place-items:center;padding:20px;background:#111a16a3;backdrop-filter:blur(4px)}.modal{width:min(510px,100%);max-height:90vh;overflow:auto;padding:22px 23px;border:1px solid #e7ede7;border-radius:14px;background:#fff;box-shadow:0 25px 80px #0c181140}.modal-head{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:18px}.modal-head h2{margin:6px 0 0;font:700 19px var(--display);letter-spacing:-.5px}.close{display:grid;width:31px;height:31px;place-items:center;color:#818a84;border:1px solid #e8ece8;border-radius:8px;background:white;cursor:pointer}.form{display:grid;gap:13px}.form label{display:grid;gap:6px;color:#4f5b53;font-size:10px;font-weight:600}.form input,.form select,.form textarea{width:100%;min-height:38px;padding:9px 10px;color:#29352d;border:1px solid #e0e6e0;border-radius:7px;outline:0;background:#fff;font-size:10px;font-weight:400}.form textarea{resize:vertical;line-height:1.5}.form input:focus,.form select:focus,.form textarea:focus{border-color:#a9cbb4;box-shadow:0 0 0 3px #e8f3eb}.form input::placeholder,.form textarea::placeholder{color:#a6ada8}.form-cols{display:grid;grid-template-columns:1fr 1fr;gap:11px}.optional{color:#a0a9a2;font:8px var(--mono);font-weight:400}.form-actions{display:flex;justify-content:flex-end;gap:7px;margin-top:6px;padding-top:13px;border-top:1px solid #edf0ed}.parts-picker{display:grid;max-height:145px;overflow:auto;border:1px solid #e8ece8;border-radius:8px}.part-option{display:flex;min-height:47px;align-items:center;justify-content:space-between;gap:10px;padding:7px 9px;border-bottom:1px solid #eff2ef}.part-option:last-child{border:0}.part-option span{display:grid;gap:4px}.part-option strong{font-size:9px}.part-option small{color:#929b95;font-size:8px}.part-option input{width:65px;min-height:30px;padding:5px;text-align:center}.total-line{display:flex;justify-content:space-between;padding:10px 1px;border-bottom:1px solid #edf0ed;font-size:10px}.total-line strong{font:700 17px var(--display)}
+    .toast{position:fixed;right:22px;bottom:22px;z-index:20;display:flex;min-height:45px;align-items:center;gap:9px;padding:0 13px;color:#37463c;border:1px solid #dce9dd;border-radius:9px;background:white;box-shadow:0 8px 32px #17211e1a;font-size:11px}.toast i{display:grid;width:23px;height:23px;place-items:center;color:#3d8055;border-radius:50%;background:#e9f4eb;font-style:normal}
+    .mobile-menu,.mobile-close{display:none}
+    @media(max-width:1100px){.sidebar{width:220px}.main{margin-left:220px}.content{padding-right:25px;padding-left:25px}.topbar{padding:0 25px}.metrics{grid-template-columns:repeat(2,minmax(0,1fr))}.metric{min-height:125px}.table-head,.table-row{grid-template-columns:1.4fr 1fr 75px 85px 110px 95px;gap:7px;padding:0 10px}}
+    @media(max-width:760px){.sidebar{width:250px;transform:translateX(-100%);transition:transform .2s;box-shadow:10px 0 35px #07140d24}.sidebar.open{transform:translateX(0)}.mobile-close{display:grid;margin-left:auto;place-items:center;color:#a4b2a8;border:0;background:transparent}.main{margin-left:0}.mobile-menu{display:grid;width:30px;height:30px;place-items:center;border:0;border-radius:7px;background:transparent}.topbar{height:56px;padding:0 16px}.content{min-height:calc(100vh - 85px);padding:24px 16px 15px}.overview-grid{grid-template-columns:1fr}.overview-card{min-height:280px}.date{display:none}.demo-banner{padding:5px 12px;text-align:center}.page-heading{align-items:flex-start;flex-direction:column}.page-heading>.btn{width:100%}.toolbar{align-items:flex-start;flex-direction:column;margin-top:12px}.search{width:100%}.filters{width:100%}.filters button{padding-right:8px;padding-left:8px}.ticket-core{flex-wrap:wrap}.ticket-copy{flex-basis:calc(100% - 55px)}.ticket-bottom{align-items:flex-start;flex-direction:column;padding:9px 0}.ticket-actions{width:100%;justify-content:flex-end}.customer-grid{grid-template-columns:1fr}.table{overflow:auto}.table-head,.table-row{width:650px}.invoice-row{width:700px}.surface.invoice-surface{overflow:auto}}
+    @media(max-width:520px){.welcome{align-items:flex-start;flex-direction:column;gap:14px}.welcome>.btn{width:100%}.welcome h1,.page-heading h1{font-size:23px}.metrics{gap:8px;margin-top:19px}.metric{min-height:120px;padding:12px}.metric strong{font-size:26px}.metric small{font-size:8px}.recent{gap:7px;padding-right:8px;padding-left:8px}.recent .pill{padding:0 6px;font-size:8px}.footer{gap:8px;font-size:7px}.modal-backdrop{align-items:end;padding:0}.modal{width:100%;max-height:92vh;padding:19px 16px;border-radius:15px 15px 0 0}.invoice-row{width:700px}}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <aside class="sidebar" id="sidebar">
+      <div class="brand"><span class="brand-mark">⚒</span><span>benchflow<small>REPAIR OPERATIONS</small></span><button class="mobile-close" id="closeNav" aria-label="Close navigation">×</button></div>
+      <div class="shop"><span class="shop-icon">⌘</span><span><strong>Northside Repair</strong><small>WORKSPACE · DEMO</small></span></div>
+      <div class="nav-label">WORKSPACE</div>
+      <nav class="nav" id="nav" aria-label="Main navigation"></nav>
+      <div class="sidebar-card"><span class="spark">✦</span><strong>Small things,<br>running smoothly.</strong><p>Keep the bench clear and the next repair close at hand.</p><button data-page="Tickets">View open work →</button></div>
+      <div class="profile"><span class="avatar">JD</span><span class="profile-copy"><strong>Jordan Davis</strong><small>Administrator · Demo</small></span><button class="plain-icon" id="reset" title="Reset demo data" aria-label="Reset demo data">↻</button></div>
+    </aside>
+    <main class="main">
+      <header class="topbar"><div class="crumbs"><button class="mobile-menu" id="openNav" aria-label="Open navigation">☰</button><span>Northside Repair</span><span class="slash">/</span><b id="crumb">Overview</b></div><div class="top-actions"><span class="date" id="today"></span><span class="top-avatar">JD</span></div></header>
+      <div class="demo-banner"><b>INTERACTIVE DEMO</b><span>Sample data is saved only in this browser — it is not connected to the secure CRMS backend.</span><button id="resetBanner">Reset sample data</button></div>
+      <div class="content" id="content"></div>
+    </main>
+  </div>
+  <div id="modalRoot"></div><div id="toastRoot" aria-live="polite"></div>
+  <script>
+    (() => {
+      "use strict";
+      const KEY = "benchflow-crms-demo-v1";
+      const seed = {
+        customers:[
+          {id:"c1",name:"Maya Patel",phone:"+1 (555) 010-2211",address:"18 Willow Lane"},
+          {id:"c2",name:"Ethan Brooks",phone:"+1 (555) 010-4482",address:"47 Oak Street"},
+          {id:"c3",name:"Sofia Nguyen",phone:"+1 (555) 010-3984",address:"9 Cedar Avenue"},
+          {id:"c4",name:"Noah Williams",phone:"+1 (555) 010-1927",address:"32 Lake Road"}
+        ],
+        parts:[
+          {id:"p1",sku:"BAT-MBP-14",name:"MacBook Pro battery",quantity_on_hand:4,unit_price:89},
+          {id:"p2",sku:"PORT-USBC-02",name:"USB-C charging port",quantity_on_hand:2,unit_price:34.5},
+          {id:"p3",sku:"SSD-NVME-1T",name:"1 TB NVMe SSD",quantity_on_hand:12,unit_price:72},
+          {id:"p4",sku:"SCR-IP15-BLK",name:"iPhone 15 screen",quantity_on_hand:0,unit_price:119},
+          {id:"p5",sku:"FAN-LTP-01",name:"Laptop cooling fan",quantity_on_hand:7,unit_price:28}
+        ],
+        tickets:[
+          {id:"BF-2408",customer_id:"c1",device_type:"MacBook Pro 14″",issue_description:"Battery drains quickly and gets warm",status:"IN_PROGRESS",estimated_cost:189,assigned_to:"Jordan Davis",created_at:Date.now()-1000*60*60*3,serial_number:"",version:2},
+          {id:"BF-2407",customer_id:"c2",device_type:"iPhone 15",issue_description:"Cracked screen after a fall",status:"OPEN",estimated_cost:149,assigned_to:"",created_at:Date.now()-1000*60*60*7,serial_number:"",version:1},
+          {id:"BF-2406",customer_id:"c3",device_type:"Dell XPS 13",issue_description:"USB-C port only charges at an angle",status:"WAITING_FOR_PARTS",estimated_cost:105,assigned_to:"Jordan Davis",created_at:Date.now()-1000*60*60*25,serial_number:"",version:3},
+          {id:"BF-2405",customer_id:"c4",device_type:"ThinkPad T14",issue_description:"Fan is noisy under light use",status:"READY_FOR_PICKUP",estimated_cost:84,assigned_to:"Casey Morgan",created_at:Date.now()-1000*60*60*30,serial_number:"",version:3},
+          {id:"BF-2404",customer_id:"c1",device_type:"iPad Air",issue_description:"Won’t hold a charge overnight",status:"PICKED_UP",estimated_cost:132,assigned_to:"Casey Morgan",created_at:Date.now()-1000*60*60*70,serial_number:"",version:4}
+        ],
+        invoices:[
+          {id:"INV-1004",ticket_id:"BF-2405",customer_id:"c4",subtotal:84,tax:6.72,total:90.72,currency:"USD",status:"ISSUED",issued_at:Date.now()-1000*60*60*30},
+          {id:"INV-1003",ticket_id:"BF-2404",customer_id:"c1",subtotal:132,tax:10.56,total:142.56,currency:"USD",status:"PAID",issued_at:Date.now()-1000*60*60*70}
+        ],
+        team:[
+          {id:"u1",name:"Jordan Davis",email:"jordan@northsiderepair.com",role:"Administrator"},
+          {id:"u2",name:"Casey Morgan",email:"casey@northsiderepair.com",role:"Technician"}
+        ],
+        nextTicket:2409,nextInvoice:1005
+      };
+      let state = load();
+      let page = "Overview";
+      let filter = "All";
+      let query = "";
+      const $ = (selector, root=document) => root.querySelector(selector);
+      const $$ = (selector, root=document) => [...root.querySelectorAll(selector)];
+      const esc = (value) => String(value ?? "").replace(/[&<>"']/g, (char) => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[char]));
+      const money = (value) => new Intl.NumberFormat("en-US",{style:"currency",currency:"USD"}).format(Number(value)||0);
+      const initials = (value) => String(value||"").split(/\s+/).slice(0,2).map(x=>x[0]||"").join("").toUpperCase();
+      const date = (value, options={month:"short",day:"numeric"}) => new Intl.DateTimeFormat("en-US",options).format(new Date(value));
+      const statuses = {OPEN:"New request",IN_PROGRESS:"In progress",WAITING_FOR_PARTS:"Waiting on parts",READY_FOR_PICKUP:"Ready for pickup",PICKED_UP:"Completed",CANCELLED:"Cancelled"};
+      const icon = {Overview:"▦",Tickets:"▤",Inventory:"▧",Customers:"♙",Invoices:"▣",Team:"♧",Account:"⚿"};
+      function load(){try{const stored=localStorage.getItem(KEY);return stored?{...structuredClone(seed),...JSON.parse(stored)}:structuredClone(seed)}catch{return structuredClone(seed)}}
+      function save(){localStorage.setItem(KEY,JSON.stringify(state))}
+      function ticketCustomer(ticket){return state.customers.find(c=>c.id===ticket.customer_id)||{name:"Unknown customer",phone:""}}
+      function nav(){
+        const items=["Overview","Tickets","Inventory","Customers","Invoices","Team","Account"];
+        $("#nav").innerHTML=items.map(name=>`<button data-page="${name}" class="${page===name?"active":""}"><span class="nav-icon">${icon[name]}</span><span class="nav-name">${name}</span>${name==="Tickets"&&openCount()?`<span class="nav-count">${openCount()}</span>`:""}</button>`).join("");
+      }
+      function openCount(){return state.tickets.filter(t=>["OPEN","IN_PROGRESS","WAITING_FOR_PARTS"].includes(t.status)).length}
+      function statusPill(status){return `<span class="pill status-${esc(status.toLowerCase())}">${esc(statuses[status]||status)}</span>`}
+      function recentRow(ticket){
+        const customer=ticketCustomer(ticket);
+        return `<button class="recent" data-open-ticket="${esc(ticket.id)}"><span class="device">${ticket.device_type.toLowerCase().includes("phone")?"▯":"⌘"}</span><span class="recent-main"><strong>${esc(customer.name)}</strong><small>${esc(ticket.device_type)} · ${esc(ticket.issue_description)}</small></span>${statusPill(ticket.status)}<span style="color:#aab2ac">→</span></button>`;
+      }
+      function empty(title,detail){return `<div class="empty"><span style="font-size:21px;color:#78927e">▦</span><strong>${esc(title)}</strong><p>${esc(detail)}</p></div>`}
+      function overview(){
+        const open=openCount(), active=state.tickets.filter(t=>["IN_PROGRESS","WAITING_FOR_PARTS"].includes(t.status)).length;
+        const ready=state.tickets.filter(t=>t.status==="READY_FOR_PICKUP").length, low=state.parts.filter(p=>p.quantity_on_hand<=5).length;
+        const firstName="Jordan";
+        const hour=new Date().getHours(), greeting=hour<12?"Good morning":hour<18?"Good afternoon":"Good evening";
+        const latest=[...state.tickets].sort((a,b)=>b.created_at-a.created_at).slice(0,5);
+        const lowParts=state.parts.filter(p=>p.quantity_on_hand<=5).slice(0,4);
+        return `<section class="welcome"><div><span class="eyebrow"><i class="dot"></i> YOUR SHOP, AT A GLANCE</span><h1>${greeting}, ${firstName}.</h1><p>Here’s what’s happening at the bench today.</p></div><button class="btn primary" data-action="new-ticket">＋ New repair ticket</button></section>
+        <section class="metrics">
+          <button class="metric" data-page="Tickets"><span class="metric-icon lavender">▤</span><span class="metric-label">Open tickets</span><strong>${String(open).padStart(2,"0")}</strong><small>Needs a pair of hands</small><span class="metric-arrow">↗</span></button>
+          <button class="metric" data-page="Tickets"><span class="metric-icon blue">⚒</span><span class="metric-label">On the bench</span><strong>${String(active).padStart(2,"0")}</strong><small>Currently being worked on</small><span class="metric-arrow">↗</span></button>
+          <button class="metric" data-page="Tickets"><span class="metric-icon green">✓</span><span class="metric-label">Ready for pickup</span><strong>${String(ready).padStart(2,"0")}</strong><small>Waiting for their owners</small><span class="metric-arrow">↗</span></button>
+          <button class="metric" data-page="Inventory"><span class="metric-icon orange">▧</span><span class="metric-label">Parts to watch</span><strong>${String(low).padStart(2,"0")}</strong><small>5 or fewer in stock</small><span class="metric-arrow">↗</span></button>
+        </section>
+        <section class="overview-grid">
+          <div class="surface overview-card"><div class="section-head"><div><span class="eyebrow">THE LATEST</span><h2>Recent repairs</h2></div><button class="text-btn" data-page="Tickets">All tickets →</button></div>${latest.length?`<div class="recent-list">${latest.map(recentRow).join("")}</div>`:empty("A clean slate.","New repair requests will show up here.")}<button class="surface-footer" data-page="Tickets">Open ticket board&nbsp; →</button></div>
+          <div class="surface overview-card"><div class="section-head"><div><span class="eyebrow">KEEP AN EYE ON</span><h2>Parts shelf</h2></div><button class="text-btn" data-page="Inventory">→</button></div>${lowParts.length?`<div class="stock-list">${lowParts.map(p=>`<div class="stock-row"><i class="stock-dot"></i><span class="stock-name"><strong>${esc(p.name)}</strong><small>${esc(p.sku)}</small></span><span class="stock-count">${p.quantity_on_hand}<small>left</small></span></div>`).join("")}</div>`:empty("Stock looks good.","Low-stock items will be flagged here.")}<button class="surface-footer" data-page="Inventory">View inventory&nbsp; →</button></div>
+        </section>
+        <section class="note"><span class="note-icon">◷</span><span class="note-copy"><strong>One thing at a time.</strong><small>Small, steady progress keeps every repair moving.</small></span><button data-page="Tickets">See what’s next →</button></section>`;
+      }
+      function ticketsPage(){
+        const filtered=state.tickets.filter(t=>{
+          const c=ticketCustomer(t), text=[t.id,t.device_type,t.issue_description,c.name,c.phone].join(" ").toLowerCase();
+          return (!query||text.includes(query.toLowerCase()))&&(filter==="All"||t.status===filter);
+        }).sort((a,b)=>b.created_at-a.created_at);
+        const filters=["All","OPEN","IN_PROGRESS","WAITING_FOR_PARTS","READY_FOR_PICKUP"];
+        return `<section class="page-heading"><div><span class="eyebrow">REPAIR WORKFLOW</span><h1>Ticket board</h1><p>Every repair, from first hello to ready for pickup.</p></div><button class="btn primary" data-action="new-ticket">＋ New ticket</button></section>
+          <div class="toolbar"><label class="search">⌕<input id="search" value="${esc(query)}" placeholder="Search repairs, customers…" aria-label="Search tickets"></label><div class="filters">${filters.map(f=>`<button class="${filter===f?"chosen":""}" data-filter="${esc(f)}">${f==="All"?"All tickets":esc(statuses[f])}</button>`).join("")}</div></div>
+          <div class="ticket-list">${filtered.map(t=>{
+            const c=ticketCustomer(t);
+            const actions=t.status==="OPEN"?`<button class="btn secondary small" data-action="claim" data-id="${esc(t.id)}">Assign to me</button>`:
+              t.status==="IN_PROGRESS"?`<button class="btn secondary small" data-action="need-parts" data-id="${esc(t.id)}">Need parts</button><button class="btn primary small" data-action="complete" data-id="${esc(t.id)}">✓ Complete repair</button>`:
+              t.status==="WAITING_FOR_PARTS"?`<button class="btn secondary small" data-action="resume" data-id="${esc(t.id)}">Resume work</button>`:
+              t.status==="READY_FOR_PICKUP"?`<button class="btn secondary small" data-action="picked-up" data-id="${esc(t.id)}">Mark picked up</button>`:"";
+            return `<article class="ticket"><div class="ticket-top"><span class="ref">${esc(t.id)} · ${date(t.created_at)}</span>${statusPill(t.status)}</div><div class="ticket-core"><span class="ticket-device">${t.device_type.toLowerCase().includes("phone")?"▯":"⌘"}</span><div class="ticket-copy"><h3>${esc(t.device_type)}</h3><p>${esc(t.issue_description)}</p></div><span class="customer-cell"><strong>${esc(c.name)}</strong><small>${esc(c.phone)}</small></span><span class="price" style="text-align:right">${money(t.estimated_cost)}</span></div><div class="ticket-bottom"><span class="assigned">${t.assigned_to?`● ${esc(t.assigned_to)}`:"◦ Waiting for a technician"}</span><span class="ticket-actions">${actions}</span></div></article>`;
+          }).join("")}${filtered.length?"":empty("Nothing on this bench.","Try another filter, or create a new repair ticket.")}</div>`;
+      }
+      function inventoryPage(){
+        const items=state.parts.filter(p=>!query||`${p.name} ${p.sku}`.toLowerCase().includes(query.toLowerCase()));
+        return `<section class="page-heading"><div><span class="eyebrow">THE PARTS SHELF</span><h1>Inventory</h1><p>Know what’s in stock before the repair needs it.</p></div><button class="btn primary" data-action="new-part">＋ Add item</button></section>
+          <div class="toolbar"><label class="search">⌕<input id="search" value="${esc(query)}" placeholder="Search parts or SKU…" aria-label="Search inventory"></label><span style="color:#8e9791;font-size:10px">${items.length} active items</span></div>
+          <div class="surface table"><div class="table-head"><span>PART</span><span>SKU</span><span>IN STOCK</span><span>UNIT PRICE</span><span>STATUS</span><span></span></div>${items.map(p=>`<div class="table-row"><span class="part-name"><i class="part-icon">⌘</i><strong>${esc(p.name)}</strong></span><span class="sku">${esc(p.sku)}</span><span class="quantity">${p.quantity_on_hand}</span><span class="price">${money(p.unit_price)}</span><span><span class="stock-status ${p.quantity_on_hand===0?"out":p.quantity_on_hand<=5?"low":""}"><i></i>${p.quantity_on_hand===0?"Out of stock":p.quantity_on_hand<=5?"Low stock":"In stock"}</span></span><button class="btn secondary small" data-action="restock" data-id="${esc(p.id)}">＋ Restock</button></div>`).join("")}${items.length?"":empty("No parts found.","Try another search or add an item.")}</div>`;
+      }
+      function customersPage(){
+        const list=state.customers.filter(c=>!query||`${c.name} ${c.phone}`.toLowerCase().includes(query.toLowerCase()));
+        return `<section class="page-heading"><div><span class="eyebrow">PEOPLE FIRST</span><h1>Customers</h1><p>A little context makes every repair feel personal.</p></div><button class="btn primary" data-action="new-customer">＋ Add customer</button></section>
+          <div class="toolbar"><label class="search">⌕<input id="search" value="${esc(query)}" placeholder="Search customers…" aria-label="Search customers"></label><span style="color:#8e9791;font-size:10px">${list.length} people</span></div>
+          <div class="customer-grid">${list.map((c,i)=>`<article class="customer-card"><span class="customer-avatar" style="background:${["#ecf3ed","#f0edf7","#eaf2f7","#faf0e7"][i%4]};color:${["#60816a","#766a9a","#507a94","#aa7751"][i%4]}">${esc(initials(c.name))}</span><span class="customer-info"><strong>${esc(c.name)}</strong><small>${esc(c.phone)}</small><em>${state.tickets.filter(t=>t.customer_id===c.id).length} repair tickets</em></span></article>`).join("")}${list.length?"":empty("No customers just yet.","Add your first customer when a repair comes through.")}</div>`;
+      }
+      function invoicesPage(){
+        return `<section class="page-heading"><div><span class="eyebrow">CLEAR, COMPLETE RECORDS</span><h1>Invoices</h1><p>Every issued invoice, together in one place.</p></div></section><div class="toolbar"><span style="color:#8e9791;font-size:10px">${state.invoices.length} issued invoices</span></div>
+        <div class="surface invoice-surface"><div class="table-head" style="grid-template-columns:1fr 1.4fr 1fr 1fr 1fr 110px"><span>INVOICE</span><span>CUSTOMER</span><span>ISSUED</span><span>STATUS</span><span style="text-align:right">TOTAL</span><span></span></div>
+        ${[...state.invoices].sort((a,b)=>b.issued_at-a.issued_at).map(inv=>`<div class="invoice-row"><span class="invoice-id">${esc(inv.id)}</span><span class="invoice-customer">${esc(ticketCustomer({customer_id:inv.customer_id}).name)}<small>${esc(inv.ticket_id)}</small></span><span style="font-size:9px;color:#87918a">${date(inv.issued_at,{year:"numeric",month:"short",day:"numeric"})}</span><span><span class="invoice-status">${esc(inv.status.toLowerCase())}</span></span><strong class="invoice-total">${money(inv.total)}</strong><span>${inv.status==="ISSUED"?`<button class="btn secondary small" data-action="paid" data-id="${esc(inv.id)}">Mark paid</button>`:""}</span></div>`).join("")}${state.invoices.length?"":empty("No invoices issued yet.","Complete a repair to issue an invoice.")}</div>`;
+      }
+      function teamPage(){
+        return `<section class="page-heading"><div><span class="eyebrow">THE PEOPLE BEHIND THE BENCH</span><h1>Team access</h1><p>Manage who can access your repair workspace.</p></div><button class="btn primary" data-action="new-member">＋ Add team member</button></section><div class="toolbar"><span style="color:#8e9791;font-size:10px">${state.team.length} staff accounts</span></div><div class="surface">${state.team.map((m,i)=>`<div class="team-row"><span class="customer-avatar">${esc(initials(m.name))}</span><span class="team-ident"><strong>${esc(m.name)}</strong><small>${esc(m.email)}</small></span><span class="role">${esc(m.role)}</span><i class="active-dot"></i></div>`).join("")}</div>`;
+      }
+      function accountPage(){
+        return `<section class="page-heading"><div><span class="eyebrow">YOUR PERSONAL SETTINGS</span><h1>Account security</h1><p>Keep your workspace access in your hands.</p></div></section><div class="surface" style="max-width:620px;margin-top:20px;padding:20px"><span class="eyebrow">DEMO PREVIEW</span><h2 style="font:700 16px var(--display)">This page is a visual prototype</h2><p style="max-width:440px;color:#859088;font-size:10px;line-height:1.7">The real application uses authenticated accounts and securely hashed passwords. This browser-only demo has no sign-in, user accounts, or password storage.</p><button class="btn secondary" data-action="reset">↻ Reset demo data</button></div>`;
+      }
+      function render(){
+        nav(); $("#crumb").textContent=page;
+        const pages={Overview:overview,Tickets:ticketsPage,Inventory:inventoryPage,Customers:customersPage,Invoices:invoicesPage,Team:teamPage,Account:accountPage};
+        $("#content").innerHTML=(pages[page]||overview)()+`<footer class="footer"><span>BENCHFLOW · REPAIR OPERATIONS</span><span>LOCAL DEMO · SAMPLE DATA</span></footer>`;
+        const searchInput=$("#search");
+        if(searchInput){searchInput.addEventListener("input",()=>{const start=searchInput.selectionStart;query=searchInput.value;const old=searchInput.value;render();const next=$("#search");next.focus();next.setSelectionRange(start,start);});}
+      }
+      function notify(message){
+        $("#toastRoot").innerHTML=`<div class="toast"><i>✓</i>${esc(message)}</div>`;
+        setTimeout(()=>$("#toastRoot").replaceChildren(),2800);
+      }
+      function go(name){page=name;query="";render();window.scrollTo({top:0,behavior:"smooth"});}
+      function showModal(title,body){
+        $("#modalRoot").innerHTML=`<div class="modal-backdrop" id="backdrop"><section class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><div class="modal-head"><div><span class="eyebrow">BENCHFLOW WORKSPACE · DEMO</span><h2 id="modalTitle">${esc(title)}</h2></div><button class="close" type="button" data-close aria-label="Close dialog">×</button></div>${body}</section></div>`;
+        $("#backdrop").addEventListener("mousedown",e=>{if(e.target.id==="backdrop")closeModal()});
+        $("[data-close]").addEventListener("click",closeModal);
+        const first=$("input,select,textarea",$("#modalRoot"));if(first)first.focus();
+      }
+      function closeModal(){$("#modalRoot").replaceChildren()}
+      function formActions(label){return `<div class="form-actions"><button type="button" class="btn quiet" data-close>Cancel</button><button class="btn primary">${esc(label)} →</button></div>`}
+      function newCustomer(){
+        showModal("Add a customer",`<form class="form" id="customerForm"><label>Full name<input name="name" required maxlength="120" placeholder="e.g. Alex Morgan"></label><label>Phone number<input name="phone" required minlength="7" maxlength="40" placeholder="+1 (555) 123-4567"></label><label>Address <span class="optional">OPTIONAL · DEMO ONLY</span><textarea name="address" rows="2" maxlength="250" placeholder="Street, city"></textarea></label>${formActions("Save customer")}</form>`);
+        $("#customerForm").addEventListener("submit",e=>{e.preventDefault();const f=new FormData(e.currentTarget);state.customers.push({id:"c"+Date.now(),name:f.get("name").trim(),phone:f.get("phone").trim(),address:f.get("address").trim()});save();closeModal();render();notify("Customer added");});
+      }
+      function newTicket(){
+        showModal("Create repair ticket",`<form class="form" id="ticketForm"><label>Customer<select name="customer_id" required><option value="">Choose a customer</option>${state.customers.map(c=>`<option value="${esc(c.id)}">${esc(c.name)} · ${esc(c.phone)}</option>`).join("")}</select></label><label>Device type<input name="device_type" required maxlength="100" placeholder="e.g. MacBook Pro 14″"></label><label>Serial number <span class="optional">OPTIONAL · DEMO ONLY, NOT ENCRYPTED</span><input name="serial" maxlength="100" placeholder="Found on the device label"></label><label>What needs attention?<textarea name="issue" required maxlength="800" rows="3" placeholder="Describe the issue…"></textarea></label><label>Estimated cost · USD <span class="optional">OPTIONAL</span><input name="estimate" type="number" min="0" step=".01" placeholder="0.00"></label>${formActions("Create ticket")}</form>`);
+        $("#ticketForm").addEventListener("submit",e=>{e.preventDefault();const f=new FormData(e.currentTarget);state.tickets.push({id:`BF-${state.nextTicket++}`,customer_id:f.get("customer_id"),device_type:f.get("device_type").trim(),issue_description:f.get("issue").trim(),serial_number:f.get("serial").trim(),status:"OPEN",estimated_cost:Number(f.get("estimate"))||null,assigned_to:"",created_at:Date.now(),version:1});save();closeModal();go("Tickets");notify("Repair ticket created");});
+      }
+      function newPart(){
+        showModal("Add inventory item",`<form class="form" id="partForm"><label>Part name<input name="name" required maxlength="120" placeholder="e.g. USB-C charging port"></label><label>SKU<input name="sku" required maxlength="60" placeholder="e.g. PORT-USBC-02"></label><div class="form-cols"><label>Quantity<input name="quantity" type="number" min="0" step="1" required placeholder="0"></label><label>Unit price · USD<input name="price" type="number" min="0" step=".01" required placeholder="0.00"></label></div>${formActions("Add to inventory")}</form>`);
+        $("#partForm").addEventListener("submit",e=>{e.preventDefault();const f=new FormData(e.currentTarget);if(state.parts.some(p=>p.sku.toLowerCase()===String(f.get("sku")).toLowerCase())){notify("That SKU already exists");return}state.parts.push({id:"p"+Date.now(),name:f.get("name").trim(),sku:f.get("sku").trim(),quantity_on_hand:Number(f.get("quantity")),unit_price:Number(f.get("price"))});save();closeModal();render();notify("Inventory item added");});
+      }
+      function restock(id){
+        const part=state.parts.find(p=>p.id===id);if(!part)return;
+        showModal("Restock inventory",`<form class="form" id="restockForm"><p style="margin:0;color:#7b857e;font-size:10px">${esc(part.name)} · ${esc(part.sku)} · currently ${part.quantity_on_hand} in stock</p><label>New total stock quantity<input name="quantity" type="number" min="0" step="1" required value="${part.quantity_on_hand}"></label><small style="color:#8e9791;font-size:9px">Enter the total quantity after the delivery is counted.</small>${formActions("Update stock")}</form>`);
+        $("#restockForm").addEventListener("submit",e=>{e.preventDefault();part.quantity_on_hand=Number(new FormData(e.currentTarget).get("quantity"));save();closeModal();render();notify("Inventory quantity updated");});
+      }
+      function complete(id){
+        const ticket=state.tickets.find(t=>t.id===id);if(!ticket)return;
+        const available=state.parts.filter(p=>p.quantity_on_hand>0);
+        showModal("Complete repair",`<form class="form" id="completeForm"><p style="margin:0;color:#66716c;font-size:10px"><strong>${esc(ticket.device_type)}</strong> · ${esc(ticketCustomer(ticket).name)}</p><label>Parts used <span class="optional">OPTIONAL</span></label><div class="parts-picker">${available.length?available.map(p=>`<label class="part-option"><span><strong>${esc(p.name)}</strong><small>${p.quantity_on_hand} available · ${money(p.unit_price)} each</small></span><input type="number" name="part_${esc(p.id)}" min="0" max="${p.quantity_on_hand}" value="0" data-part-price="${p.unit_price}"></label>`).join(""):`<div class="part-option"><span><small>No parts are currently in stock.</small></span></div>`}</div><div class="form-cols"><label>Labor · USD<input name="labor" type="number" min="0" step=".01" required value="${Number(ticket.estimated_cost)||0}"></label><label>Tax · USD<input name="tax" type="number" min="0" step=".01" required value="0"></label></div><div class="total-line"><span>Invoice total</span><strong id="previewTotal">${money(Number(ticket.estimated_cost)||0)}</strong></div>${formActions("Complete & issue invoice")}</form>`);
+        const form=$("#completeForm"), updateTotal=()=>{let total=Number(form.elements.labor.value||0)+Number(form.elements.tax.value||0);$$("[data-part-price]",form).forEach(input=>total+=Number(input.dataset.partPrice)*Number(input.value||0));$("#previewTotal").textContent=money(total)};
+        form.addEventListener("input",updateTotal);
+        form.addEventListener("submit",e=>{e.preventDefault();const data=new FormData(form);let subtotalCents=Math.round(Number(data.get("labor"))*100);const partsUsed=[];
+          for(const part of state.parts){const quantity=Number(data.get(`part_${part.id}`)||0);if(quantity>part.quantity_on_hand){notify("Not enough stock for "+part.name);return}if(quantity){part.quantity_on_hand-=quantity;subtotalCents+=Math.round(part.unit_price*100)*quantity;partsUsed.push({id:part.id,quantity,unit_price:part.unit_price})}}
+          const taxCents=Math.round(Number(data.get("tax"))*100),subtotal=subtotalCents/100,tax=taxCents/100,total=(subtotalCents+taxCents)/100;
+          ticket.status="READY_FOR_PICKUP";ticket.version++;
+          state.invoices.push({id:`INV-${state.nextInvoice++}`,ticket_id:ticket.id,customer_id:ticket.customer_id,subtotal,tax,total,currency:"USD",status:"ISSUED",issued_at:Date.now()});
+          save();closeModal();render();notify("Repair completed and invoice issued");
+        });
+      }
+      function newMember(){
+        showModal("Add a team member",`<form class="form" id="teamForm"><label>Full name<input name="name" required maxlength="100" placeholder="e.g. Taylor Lee"></label><label>Work email<input name="email" type="email" required maxlength="150" placeholder="teammate@workshop.com"></label><label>Role<select name="role"><option>Technician</option><option>Administrator</option></select></label><p style="color:#9b7650;font-size:9px">Demo only: this does not create a real login account.</p>${formActions("Add team member")}</form>`);
+        $("#teamForm").addEventListener("submit",e=>{e.preventDefault();const f=new FormData(e.currentTarget);state.team.push({id:"u"+Date.now(),name:f.get("name").trim(),email:f.get("email").trim(),role:f.get("role")});save();closeModal();render();notify("Demo team member added");});
+      }
+      function invoicePaid(id){const invoice=state.invoices.find(i=>i.id===id);if(invoice){invoice.status="PAID";save();render();notify("Invoice marked paid")}}
+      function handleAction(action,id){
+        const ticket=state.tickets.find(t=>t.id===id);
+        if(action==="new-ticket")return state.customers.length?newTicket():notify("Add a customer before creating a ticket");
+        if(action==="new-customer")return newCustomer();
+        if(action==="new-part")return newPart();
+        if(action==="new-member")return newMember();
+        if(action==="restock")return restock(id);
+        if(action==="complete")return complete(id);
+        if(action==="paid")return invoicePaid(id);
+        if(action==="reset")return reset();
+        if(!ticket)return;
+        if(action==="claim"&&ticket.status==="OPEN"){ticket.status="IN_PROGRESS";ticket.assigned_to="Jordan Davis";ticket.version++;save();render();notify("Ticket assigned to you")}
+        if(action==="need-parts"&&ticket.status==="IN_PROGRESS"){ticket.status="WAITING_FOR_PARTS";ticket.version++;save();render();notify("Ticket moved to waiting for parts")}
+        if(action==="resume"&&ticket.status==="WAITING_FOR_PARTS"){ticket.status="IN_PROGRESS";ticket.version++;save();render();notify("Repair resumed")}
+        if(action==="picked-up"&&ticket.status==="READY_FOR_PICKUP"){ticket.status="PICKED_UP";ticket.version++;save();render();notify("Ticket marked picked up")}
+      }
+      function reset(){if(!confirm("Reset this browser demo to its original sample data?"))return;state=structuredClone(seed);save();page="Overview";filter="All";query="";render();notify("Demo data reset")}
+      document.addEventListener("click",e=>{
+        const target=e.target.closest("[data-page],[data-action],[data-filter],[data-open-ticket],[data-close]");
+        if(!target)return;
+        if(target.dataset.page){go(target.dataset.page);$("#sidebar").classList.remove("open");return}
+        if(target.dataset.filter){filter=target.dataset.filter;render();return}
+        if(target.dataset.openTicket){go("Tickets");return}
+        if(target.dataset.action){handleAction(target.dataset.action,target.dataset.id);return}
+        if(target.dataset.close)closeModal();
+      });
+      $("#reset").addEventListener("click",reset);$("#resetBanner").addEventListener("click",reset);
+      $("#openNav").addEventListener("click",()=>$("#sidebar").classList.add("open"));
+      $("#closeNav").addEventListener("click",()=>$("#sidebar").classList.remove("open"));
+      $("#today").textContent=new Intl.DateTimeFormat("en-US",{weekday:"short",month:"short",day:"numeric"}).format(new Date());
+      render();
+    })();
+  </script>
+</body>
+</html>
