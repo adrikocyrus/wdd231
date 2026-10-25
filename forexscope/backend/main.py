@@ -17,7 +17,6 @@ from backend.models import (
 from backend.risk_manager import calculate_risk
 from backend.scanner import scan_market
 
-
 FRONTEND_DIR = BASE_DIR / "frontend"
 app = FastAPI(
     title="ForexScope",
@@ -126,7 +125,9 @@ def risk_calculation(request: RiskRequest):
     try:
         pair = request.pair.strip().upper()
         if not any(item["symbol"] == pair for item in get_provider().instruments()):
-            raise ValueError("Currency pair is not available from the configured provider.")
+            raise ValueError(
+                "Currency pair is not available from the configured provider."
+            )
         return calculate_risk(request)
     except ValueError as error:
         raise HTTPException(status_code=422, detail=str(error)) from error
@@ -135,9 +136,7 @@ def risk_calculation(request: RiskRequest):
 @app.get("/api/watchlist")
 def get_watchlist():
     with database.connect() as connection:
-        rows = connection.execute(
-            "SELECT pair FROM watchlist ORDER BY pair"
-        ).fetchall()
+        rows = connection.execute("SELECT pair FROM watchlist ORDER BY pair").fetchall()
     return {"pairs": [row["pair"] for row in rows]}
 
 

@@ -1,5 +1,5 @@
 import unittest
-from datetime import datetime, timedelta, timezone
+from datetime import UTC, datetime, timedelta
 
 from backend.data_provider import SampleDataProvider
 from backend.scanner import analyze_instrument, scan_market
@@ -18,13 +18,15 @@ class SignalTests(unittest.TestCase):
 
     def test_signal_is_neutral_when_history_is_insufficient(self):
         instrument = self.provider.instruments()[0]
-        result = analyze_instrument(instrument, self.provider.candles(instrument["symbol"])[:10])
+        result = analyze_instrument(
+            instrument, self.provider.candles(instrument["symbol"])[:10]
+        )
         self.assertEqual(result["signal"], "NO SIGNAL")
 
     def test_stale_data_never_generates_actionable_signal(self):
         instrument = self.provider.instruments()[0]
         candles = self.provider.candles(instrument["symbol"])
-        stale = datetime.now(timezone.utc) - timedelta(days=3)
+        stale = datetime.now(UTC) - timedelta(days=3)
         for index, candle in enumerate(candles):
             candle["time"] = (stale - timedelta(hours=len(candles) - index)).isoformat()
         result = analyze_instrument(instrument, candles)

@@ -14,14 +14,14 @@ class PaperTradingTests(unittest.TestCase):
         self.database = Database(Path(self.temp_dir.name) / "test.sqlite3")
         self.provider = SampleDataProvider()
         self.buy_signal = next(
-            row for row in self.provider.instruments()
-            if row["symbol"] == "EUR/USD"
+            row for row in self.provider.instruments() if row["symbol"] == "EUR/USD"
         )
         from backend.scanner import scan_market
 
         self.direction = Direction(
             next(
-                row["signal"] for row in scan_market(self.provider)
+                row["signal"]
+                for row in scan_market(self.provider)
                 if row["symbol"] == self.buy_signal["symbol"]
             )
         )
@@ -62,7 +62,9 @@ class PaperTradingTests(unittest.TestCase):
             open_trade(self.database, self.provider, request)
 
     def test_non_usd_quote_pair_is_rejected_without_conversion_data(self):
-        row = next(item for item in self.provider.instruments() if item["symbol"] == "USD/JPY")
+        row = next(
+            item for item in self.provider.instruments() if item["symbol"] == "USD/JPY"
+        )
         request = self.make_trade(
             direction=Direction.BUY if row["symbol"] == "USD/JPY" else self.direction,
             pair="USD/JPY",

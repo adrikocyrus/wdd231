@@ -2,7 +2,6 @@ import math
 
 from backend.models import Direction, RiskRequest, RiskResult, TradeCreate
 
-
 DEFAULT_RISK_PER_TRADE_PERCENT = 0.5
 MAXIMUM_DAILY_LOSS_PERCENT = 2.0
 MAXIMUM_OPEN_TRADES = 3
@@ -50,9 +49,7 @@ def validate_trade_prices(trade: TradeCreate) -> float:
     reward_distance = abs(trade.take_profit - trade.entry)
     ratio = reward_distance / risk_distance
     if ratio < MINIMUM_REWARD_TO_RISK:
-        raise ValueError(
-            f"Reward-to-risk must be at least {MINIMUM_REWARD_TO_RISK}:1."
-        )
+        raise ValueError(f"Reward-to-risk must be at least {MINIMUM_REWARD_TO_RISK}:1.")
     monetary_risk = risk_distance * trade.position_units
     risk_limit = trade.simulated_equity * DEFAULT_RISK_PER_TRADE_PERCENT / 100
     if monetary_risk > risk_limit and not math.isclose(

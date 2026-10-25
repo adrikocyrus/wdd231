@@ -1,6 +1,6 @@
 import math
-from datetime import datetime, timedelta, timezone
-from typing import Protocol
+from datetime import UTC, datetime, timedelta
+from typing import ClassVar, Protocol
 
 
 class DataProviderError(RuntimeError):
@@ -10,18 +10,16 @@ class DataProviderError(RuntimeError):
 class ForexDataProvider(Protocol):
     name: str
 
-    def instruments(self) -> list[dict]:
-        ...
+    def instruments(self) -> list[dict]: ...
 
-    def candles(self, symbol: str, timeframe: str = "1h") -> list[dict]:
-        ...
+    def candles(self, symbol: str, timeframe: str = "1h") -> list[dict]: ...
 
 
 class SampleDataProvider:
-    name = "Generated sample data (not live market data)"
-    available_timeframes = ["1h"]
+    name: ClassVar[str] = "Generated sample data (not live market data)"
+    available_timeframes: ClassVar[list[str]] = ["1h"]
 
-    _instruments = [
+    _instruments: ClassVar[list[dict[str, str]]] = [
         {"symbol": "EUR/USD", "category": "Major", "base": "EUR", "quote": "USD"},
         {"symbol": "GBP/USD", "category": "Major", "base": "GBP", "quote": "USD"},
         {"symbol": "USD/JPY", "category": "Major", "base": "USD", "quote": "JPY"},
@@ -31,9 +29,7 @@ class SampleDataProvider:
     ]
 
     def __init__(self) -> None:
-        current_hour = datetime.now(timezone.utc).replace(
-            minute=0, second=0, microsecond=0
-        )
+        current_hour = datetime.now(UTC).replace(minute=0, second=0, microsecond=0)
         self.last_closed_hour = current_hour - timedelta(hours=1)
         self._cache: dict[str, list[dict]] = {}
 
@@ -93,4 +89,3 @@ class SampleDataProvider:
             previous_close = close
 
         return candles
-

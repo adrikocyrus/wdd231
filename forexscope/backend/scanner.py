@@ -1,5 +1,5 @@
-from datetime import datetime, timezone
 import math
+from datetime import UTC, datetime
 
 from backend.data_provider import ForexDataProvider
 from backend.indicators import ema, rsi
@@ -45,12 +45,14 @@ def analyze_instrument(instrument: dict, candles: list[dict]) -> dict:
     if last_candle_time:
         timestamp = datetime.fromisoformat(last_candle_time)
         if timestamp.tzinfo is None:
-            timestamp = timestamp.replace(tzinfo=timezone.utc)
-        stale = (datetime.now(timezone.utc) - timestamp).total_seconds() > 24 * 3600
+            timestamp = timestamp.replace(tzinfo=UTC)
+        stale = (datetime.now(UTC) - timestamp).total_seconds() > 24 * 3600
 
     if len(candles) < 50 or ema20 is None or ema50 is None or latest_rsi is None:
         signal = "NO SIGNAL"
-        reason = "There is not enough completed candle history to calculate the indicators."
+        reason = (
+            "There is not enough completed candle history to calculate the indicators."
+        )
     elif stale:
         signal = "NO SIGNAL"
         reason = "The latest completed candle is stale, so no paper-trade signal is available."

@@ -48,4 +48,3 @@ def _rsi_value(average_gain: float, average_loss: float) -> float:
         return 100.0 if average_gain > 0 else 50.0
     relative_strength = average_gain / average_loss
     return 100 - (100 / (1 + relative_strength))
-

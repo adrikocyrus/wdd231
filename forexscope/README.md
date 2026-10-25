@@ -22,7 +22,7 @@ Open PowerShell in the `forexscope` folder:
 ```powershell
 py -m venv .venv
 .\.venv\Scripts\Activate.ps1
-python -m pip install -r requirements.txt
+python -m pip install -r requirements-dev.txt
 Copy-Item .env.example .env
 python -m uvicorn backend.main:app --reload
 ```
@@ -47,6 +47,8 @@ python -m unittest discover -s tests -v
 ```
 
 The tests cover EMA/RSI calculations, signal rules and stale data, risk limits, paper-trade P/L, database persistence, and API validation.
+
+The development requirements also install Ruff for Python linting and formatting. In VS Code, use **Terminal → Run Task → ForexScope: Lint Python** to check the backend and tests.
 
 ## Safe demo use
 

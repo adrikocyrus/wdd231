@@ -1,6 +1,6 @@
 from enum import Enum
 
-from pydantic import BaseModel, Field, model_validator
+from pydantic import BaseModel, Field
 
 
 class Direction(str, Enum):
@@ -60,4 +60,3 @@ class Trade(BaseModel):
 
 class WatchlistItem(BaseModel):
     pair: str
-

@@ -1,5 +1,5 @@
-from datetime import datetime, timezone
 import math
+from datetime import UTC, datetime
 
 from backend.data_provider import ForexDataProvider
 from backend.database import Database
@@ -44,25 +44,23 @@ def open_trade(
             "currency conversions are available."
         )
 
-    scan = next((item for item in scan_market(provider) if item["symbol"] == pair), None)
+    scan = next(
+        (item for item in scan_market(provider) if item["symbol"] == pair), None
+    )
     if scan is None or scan["stale"] or scan["signal"] != request.direction.value:
         raise ValueError(
             "A fresh matching sample signal is required to open a simulated trade."
         )
 
     validate_trade_prices(request)
-    now = datetime.now(timezone.utc)
+    now = datetime.now(UTC)
     day_start = now.replace(hour=0, minute=0, second=0, microsecond=0).isoformat()
     equity_setting = f"starting_equity:{now.date().isoformat()}"
     with database.connect() as connection:
         setting = connection.execute(
             "SELECT value FROM settings WHERE key = ?", (equity_setting,)
         ).fetchone()
-        daily_equity = (
-            float(setting["value"])
-            if setting
-            else request.simulated_equity
-        )
+        daily_equity = float(setting["value"]) if setting else request.simulated_equity
         if not math.isclose(
             request.simulated_equity, daily_equity, rel_tol=1e-9, abs_tol=1e-9
         ):
@@ -83,7 +81,9 @@ def open_trade(
             (pair, request.direction.value),
         ).fetchone()
         if duplicate:
-            raise ValueError("An open simulated trade already exists for this pair and direction.")
+            raise ValueError(
+                "An open simulated trade already exists for this pair and direction."
+            )
 
         losses = connection.execute(
             """
@@ -95,11 +95,8 @@ def open_trade(
         ).fetchone()[0]
         planned_loss = abs(request.entry - request.stop_loss) * request.position_units
         daily_loss_limit = daily_equity * MAXIMUM_DAILY_LOSS_PERCENT / 100
-        if (
-            losses + planned_loss > daily_loss_limit
-            and not math.isclose(
-                losses + planned_loss, daily_loss_limit, rel_tol=1e-9, abs_tol=1e-9
-            )
+        if losses + planned_loss > daily_loss_limit and not math.isclose(
+            losses + planned_loss, daily_loss_limit, rel_tol=1e-9, abs_tol=1e-9
         ):
             raise ValueError(
                 "This trade would exceed the 2% simulated daily-loss limit for this equity."
@@ -135,7 +132,7 @@ def open_trade(
 
 
 def close_trade(database: Database, trade_id: int, exit_price: float) -> Trade:
-    now = datetime.now(timezone.utc).isoformat()
+    now = datetime.now(UTC).isoformat()
     with database.connect() as connection:
         row = connection.execute(
             "SELECT * FROM trades WHERE id = ?", (trade_id,)

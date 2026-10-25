@@ -1,7 +1,11 @@
 import unittest
 
 from backend.models import Direction, RiskRequest, TradeCreate
-from backend.risk_manager import calculate_risk, calculate_trade_pnl, validate_trade_prices
+from backend.risk_manager import (
+    calculate_risk,
+    calculate_trade_pnl,
+    validate_trade_prices,
+)
 
 
 class RiskManagerTests(unittest.TestCase):

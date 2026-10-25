@@ -57,8 +57,14 @@ class ApiTests(unittest.TestCase):
     def test_invalid_risk_request_returns_validation_error(self):
         response = self.client.post(
             "/api/risk/calculate",
-            json={"pair": "EUR/USD", "equity": -5, "risk_percent": 0.5,
-                  "entry": 1.08, "stop_loss": 1.07, "take_profit": 1.10},
+            json={
+                "pair": "EUR/USD",
+                "equity": -5,
+                "risk_percent": 0.5,
+                "entry": 1.08,
+                "stop_loss": 1.07,
+                "take_profit": 1.10,
+            },
         )
         self.assertEqual(response.status_code, 422)
 
