@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0b1118">
+    <meta
+      name="description"
+      content="ForexScope is an educational forex scanner and paper-trading dashboard using sample data."
+    >
+    <title>ForexScope — Sample market analysis</title>
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <script src="https://unpkg.com/lightweight-charts@4.2.3/dist/lightweight-charts.standalone.production.js"></script>
+    <script type="module" src="/assets/js/app.js"></script>
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="ForexScope dashboard">
+        <span class="brand-mark" aria-hidden="true">F</span>
+        <span>Forex<span class="brand-accent">Scope</span></span>
+      </a>
+      <nav class="main-nav" aria-label="Main navigation">
+        <a class="active" href="#dashboard">Dashboard</a>
+        <a href="#scanner">Market scanner</a>
+        <a href="#watchlist">Watchlist</a>
+        <a href="#risk">Risk calculator</a>
+        <a href="#history">Trade history</a>
+      </nav>
+      <div class="market-status">
+        <span class="status-dot"></span>
+        <span id="data-status">Connecting…</span>
+      </div>
+    </header>
+
+    <main id="dashboard" class="page-shell">
+      <section class="welcome-row">
+        <div>
+          <p class="eyebrow">MARKET OVERVIEW <span class="sample-pill">SAMPLE DATA</span></p>
+          <h1>Forex dashboard</h1>
+          <p class="muted">
+            Educational analysis from generated candles — not live prices or trading advice.
+          </p>
+        </div>
+        <div class="update-box">
+          <span class="muted">Last sample candle</span>
+          <strong id="last-updated">—</strong>
+          <button class="quiet-button" id="refresh-button" type="button">Refresh scan</button>
+        </div>
+      </section>
+
+      <section class="summary-grid" aria-label="Market summary">
+        <article class="summary-card">
+          <span class="card-label">Pairs scanned</span>
+          <strong id="pairs-count">—</strong>
+          <span class="card-foot">Provider-supported sample set</span>
+        </article>
+        <article class="summary-card">
+          <span class="card-label">BUY candidates</span>
+          <strong id="buy-count" class="positive">—</strong>
+          <span class="card-foot">Example rules only</span>
+        </article>
+        <article class="summary-card">
+          <span class="card-label">SELL candidates</span>
+          <strong id="sell-count" class="negative">—</strong>
+          <span class="card-foot">Example rules only</span>
+        </article>
+        <article class="summary-card">
+          <span class="card-label">No signal / unavailable</span>
+          <strong id="neutral-count">—</strong>
+          <span class="card-foot">Not a recommendation</span>
+        </article>
+      </section>
+
+      <section id="scanner" class="panel scanner-panel">
+        <div class="panel-heading">
+          <div>
+            <p class="eyebrow">MARKET SCANNER</p>
+            <h2>Currency pairs</h2>
+          </div>
+          <span class="source-note">Generated sample candles · 1 hour</span>
+        </div>
+        <div class="toolbar">
+          <label class="search-field">
+            <span class="visually-hidden">Search currency pairs</span>
+            <span aria-hidden="true">⌕</span>
+            <input id="pair-search" type="search" placeholder="Search pairs…" autocomplete="off">
+          </label>
+          <label class="select-label" for="pair-filter">Show</label>
+          <select id="pair-filter">
+            <option value="all">All pairs</option>
+            <option value="Major">Major</option>
+            <option value="Minor">Minor</option>
+            <option value="Exotic">Exotic</option>
+            <option value="favorites">Favorites</option>
+          </select>
+        </div>
+        <div class="table-scroll">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Favorite</th>
+                <th scope="col" data-sort="symbol">Pair <span>↕</span></th>
+                <th scope="col" data-sort="price">Sample close <span>↕</span></th>
+                <th scope="col" data-sort="change_percent">Change <span>↕</span></th>
+                <th scope="col" data-sort="ema20">EMA 20 <span>↕</span></th>
+                <th scope="col" data-sort="ema50">EMA 50 <span>↕</span></th>
+                <th scope="col" data-sort="rsi14">RSI 14 <span>↕</span></th>
+                <th scope="col" data-sort="signal">Signal <span>↕</span></th>
+              </tr>
+            </thead>
+            <tbody id="scanner-rows">
+              <tr><td colspan="8" class="empty-cell">Loading sample instruments…</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="table-disclaimer">
+          The scanner contains generated historical-style data, not current forex prices.
+          Bid, ask, and volume are omitted because the sample provider does not supply them.
+        </p>
+      </section>
+
+      <section class="content-grid">
+        <article class="panel chart-panel">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">PRICE ACTION</p>
+              <h2 id="chart-title">EUR/USD <span class="muted-heading">· Sample candles</span></h2>
+            </div>
+            <label class="timeframe-control">
+              <span class="visually-hidden">Chart timeframe</span>
+              <select id="timeframe-select" aria-label="Chart timeframe">
+                <option value="1h">1 hour</option>
+              </select>
+            </label>
+          </div>
+          <div id="price-chart" class="price-chart" aria-label="Sample candlestick chart"></div>
+          <div class="chart-legend">
+            <span><i class="legend-candle"></i> Completed sample candles</span>
+            <span id="chart-status">Data source: generated sample data</span>
+          </div>
+        </article>
+
+        <article class="panel signal-panel">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">RULE CHECK</p>
+              <h2>Signal details</h2>
+            </div>
+          </div>
+          <div id="signal-detail" class="signal-detail">
+            <p class="muted">Select a pair in the scanner to inspect its rules.</p>
+          </div>
+          <p class="notice">
+            These educational EMA/RSI rules are not a proven profitable strategy.
+            Sample signals are not real recommendations.
+          </p>
+        </article>
+      </section>
+
+      <section class="content-grid lower-grid">
+        <article id="risk" class="panel">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">PLAN A SIMULATION</p>
+              <h2>Risk calculator</h2>
+            </div>
+          </div>
+          <form id="risk-form" class="form-grid">
+            <label>Currency pair
+              <select name="pair" class="pair-options" required></select>
+            </label>
+            <label>Simulated equity
+              <input name="equity" type="number" min="1" step="any" value="10000" required>
+            </label>
+            <label>Risk budget (%)
+              <input name="risk_percent" type="number" min="0.01" max="100" step="0.01" value="0.5" required>
+            </label>
+            <label>Entry price
+              <input name="entry" type="number" min="0.000001" step="any" placeholder="e.g. 1.0750" required>
+            </label>
+            <label>Stop-loss price
+              <input name="stop_loss" type="number" min="0.000001" step="any" placeholder="Required" required>
+            </label>
+            <label>Take-profit price
+              <input name="take_profit" type="number" min="0.000001" step="any" placeholder="Required" required>
+            </label>
+            <button class="primary-button form-submit" type="submit">Calculate risk</button>
+          </form>
+          <div id="risk-result" class="result-box" aria-live="polite">
+            Enter a plan to calculate a risk budget and reward-to-risk ratio.
+          </div>
+        </article>
+
+        <article id="watchlist" class="panel">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">YOUR SHORTLIST</p>
+              <h2>Watchlist</h2>
+            </div>
+          </div>
+          <p class="muted small-copy">Use the star in the scanner to save or remove a sample pair.</p>
+          <ul id="watchlist-items" class="watchlist-list">
+            <li class="muted">Loading saved pairs…</li>
+          </ul>
+        </article>
+      </section>
+
+      <section id="history" class="panel history-panel">
+        <div class="panel-heading">
+          <div>
+            <p class="eyebrow">PAPER TRADING ONLY</p>
+            <h2>Simulated trades</h2>
+          </div>
+          <span class="simulated-tag">No real orders are sent</span>
+        </div>
+        <div id="trade-statistics" class="statistics-grid"></div>
+        <form id="trade-form" class="trade-form">
+          <label>Pair <select name="pair" class="pair-options" required></select></label>
+          <label>Direction
+            <select name="direction" required><option>BUY</option><option>SELL</option></select>
+          </label>
+          <label>Entry <input name="entry" type="number" min="0.000001" step="any" required></label>
+          <label>Stop-loss <input name="stop_loss" type="number" min="0.000001" step="any" required></label>
+          <label>Take-profit <input name="take_profit" type="number" min="0.000001" step="any" required></label>
+          <label>Position units
+            <input name="position_units" type="number" min="0.000001" step="any" required>
+          </label>
+          <label>Simulated equity (USD)
+            <input name="simulated_equity" type="number" min="1" step="any" value="10000" required>
+          </label>
+          <button class="primary-button" type="submit">Open paper trade</button>
+        </form>
+        <p class="table-disclaimer">
+          Safeguards: required stop-loss, max 0.5% equity risk per trade, 1.5:1 minimum
+          reward-to-risk, 2% daily loss cap, and at most 3 open trades. Trades are limited
+          to USD-quoted pairs because conversion data is unavailable. Simulated P/L excludes
+          spreads, costs, and slippage.
+        </p>
+        <div class="table-scroll trade-table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Pair</th><th scope="col">Side</th><th scope="col">Position</th>
+                <th scope="col">Entry → Stop / Target</th><th scope="col">Status</th>
+                <th scope="col">Simulated P/L</th><th scope="col">Action</th>
+              </tr>
+            </thead>
+            <tbody id="trade-rows">
+              <tr><td colspan="7" class="empty-cell">No simulated trades yet.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p id="trade-message" class="form-message" aria-live="polite"></p>
+      </section>
+
+      <footer class="footer">
+        <span>ForexScope · Beginner demonstration · Sample data only</span>
+        <a href="/docs" target="_blank" rel="noreferrer">API documentation</a>
+      </footer>
+    </main>
+  </body>
+</html>
